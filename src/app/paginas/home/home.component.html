@@ -1,18 +1,28 @@
-<main>
+<main class="bg-[#f4f4f4b0]">
     <cabecalho-app></cabecalho-app>
     
     <section class="mt-32 mb-32">
-        <div class="flex justify-center relative">
-            <img src="assets/images/banner.jpg"h class="rounded-4xl" alt="Imagem de um notebook">
+        <div class="flex gap-3 justify-center items-center  ">
+            <div class="bg-[#202020] rounded-4xl p-5">
+                <img src="assets/images/produtos-mostruario4.png" class="h-[37rem] object-fit" alt="Imagem de um notebook">
+            </div>
+
+            <div class="flex flex-col justify-center gap-3">
+                <div class="bg-[#202020] rounded-4xl p-5">
+                    <img src="assets/images/produtos-mostruario.png"  class="rounded-4xl h-72 object-cover" alt="Imagem de um console portátil">            
+                </div>
             
-            <div class="absolute right-60 top-40 text-center flex flex-col gap-5">
-                <h2 class="text-4xl text-[#2E8FC5] font-bold">Vendas com <span class="text-[#F4A261]">50%</span> de desconto</h2>
-                <p class="text-2xl text-white">Tela HD de 12 polegadas</p>
+                <img src="assets/images/produtos-mostruario2.png" class="bg-[#202020] rounded-4xl h-72 object-fit" alt="Imagem de um Playstation 5">
             </div>
         </div>
     </section>
 
-    <lista-produtos-app></lista-produtos-app>
+    <div class="flex flex-col justify-center items-center gap-8">
+        <h2 class="font-semibold text-4xl">Mais vendidos</h2>
+        <div class="w-4/5">
+            <lista-produtos-app></lista-produtos-app>
+        </div>
+    </div>
 
     <app-feedbacks></app-feedbacks>
 

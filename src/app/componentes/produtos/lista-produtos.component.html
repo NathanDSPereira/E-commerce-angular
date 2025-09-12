@@ -1,5 +1,5 @@
-<ul class="flex flex-wrap gap-4 justify-center p-4 mb-11">
-    <li *ngFor="let produto of listaProdutos | slice:0:4">
+<ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full">
+    <li *ngFor="let produto of listaProdutos | slice:0:6" class="flex justify-center items-center">
         <produto-card [produto]="produto"></produto-card>
     </li>
 </ul>
