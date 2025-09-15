@@ -15,4 +15,8 @@ import { RodapeComponent } from '../../componentes/rodape/rodape.component';
 })
 
 export class HomeComponent{
+
+  escrollarParaTopo(): void {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+  }
 }
