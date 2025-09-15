@@ -12,7 +12,9 @@
                     <img src="assets/images/produtos-mostruario.png"  class="rounded-4xl h-72 object-cover" alt="Imagem de um console portátil">            
                 </div>
             
-                <img src="assets/images/produtos-mostruario2.png" class="bg-[#202020] rounded-4xl h-72 object-fit" alt="Imagem de um Playstation 5">
+                <div class="bg-[#202020] rounded-4xl p-5 flex justify-center items-center">
+                    <img src="assets/images/produtos-mostruario2.png" class="bg-[#202020] rounded-4xl h-64 object-cover" alt="Imagem de um Playstation 5">
+                </div>
             </div>
         </div>
     </section>
@@ -26,5 +28,5 @@
 
     <app-feedbacks></app-feedbacks>
 
-    <app-rodape></app-rodape>
+    <app-rodape (scrollar)="escrollarParaTopo()"></app-rodape>
 </main>
