@@ -8,11 +8,11 @@ import { Produto, ProdutoService } from '../../service/produto.service';
   selector: 'lista-produtos-app',
   imports: [FormsModule, CommonModule, ProdutoIndividualComponent],
   standalone: true,
-  templateUrl: './lista-produtos.component.html',
-  styleUrl: './lista-produtos.component.css'
+  templateUrl: './produtos.component.html',
+  styleUrl: './produtos.component.css'
 })
 
-export class ListaProdutosComponent implements OnInit{
+export class ProdutosComponent implements OnInit{
   listaProdutos: Produto[] = [];
   hoverProdutos: boolean = false;
 
