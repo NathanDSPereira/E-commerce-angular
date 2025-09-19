@@ -6,10 +6,12 @@ import { ProdutosComponent } from '../../componentes/produtos/produtos.component
 import { FeedbacksComponent } from '../../componentes/feedbacks/feedbacks.component';
 import { RodapeComponent } from '../../componentes/rodape/rodape.component';
 import { CategoriasCardComponent } from '../../componentes/categorias-card-list/categorias-card.component';
+import { RouterOutlet } from '@angular/router';
+
 
 @Component({
   selector: 'home-app',
-  imports: [FormsModule, CabecalhoComponent, CommonModule, ProdutosComponent, FeedbacksComponent, RodapeComponent, CategoriasCardComponent],
+  imports: [FormsModule, CabecalhoComponent, CommonModule, ProdutosComponent, FeedbacksComponent, RodapeComponent, CategoriasCardComponent, RouterOutlet],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

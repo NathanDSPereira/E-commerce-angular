@@ -1,5 +1,5 @@
-<cabecalho-app></cabecalho-app>
-
-<lista-produtos-app></lista-produtos-app>
-
-<app-rodape (scrollar)="escrollarParaTopo()"></app-rodape>
+<ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full">
+    <li *ngFor="let produto of listaProdutos" class="flex justify-center items-center">
+        <produto-card [produto]="produto"></produto-card>
+    </li>
+</ul>

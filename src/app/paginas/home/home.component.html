@@ -1,39 +1,9 @@
 <main class="bg-[#f4f4f4b0]">
     <cabecalho-app></cabecalho-app>
-    
-    <section class="mt-32 mb-32">
-        <div class="flex gap-3 justify-center items-center  ">
-            <div class="bg-[#202020] rounded-4xl p-5">
-                <img src="assets/images/produtos-mostruario4.png" class="h-[37rem] object-fit" alt="Imagem de um notebook">
-            </div>
 
-            <div class="flex flex-col justify-center gap-3">
-                <div class="bg-[#202020] rounded-4xl p-5">
-                    <img src="assets/images/produtos-mostruario.png"  class="rounded-4xl h-72 object-cover" alt="Imagem de um console portátil">            
-                </div>
-            
-                <div class="bg-[#202020] rounded-4xl p-5 flex justify-center items-center">
-                    <img src="assets/images/produtos-mostruario2.png" class="bg-[#202020] rounded-4xl h-64 object-cover" alt="Imagem de um Playstation 5">
-                </div>
-            </div>
-        </div>
+    <section>
+        <router-outlet></router-outlet>
     </section>
-
-    <div class="flex flex-col justify-center items-center gap-8">
-        <h2 class="font-semibold text-4xl">Mais vendidos</h2>
-        <div class="w-4/5">
-            <lista-produtos-app></lista-produtos-app>
-        </div>
-    </div>
-
-    <ul class="flex flex-col items-center gap-8 justify-center mt-20">
-        <h3 class="font-semibold text-4xl">Principais categorias</h3>
-        <li class="mt-8">
-            <app-categorias-card></app-categorias-card>
-        </li>
-    </ul>
-
-    <app-feedbacks></app-feedbacks>
-
+        
     <app-rodape (scrollar)="escrollarParaTopo()"></app-rodape>
 </main>
