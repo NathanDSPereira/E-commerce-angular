@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'cabecalho-app',
@@ -10,4 +11,11 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class CabecalhoComponent {
+
+
+  constructor(private navegar: Router) {}
+
+  redirecionar(): void {
+    this.navegar.navigate(['/home'])
+  }
 }

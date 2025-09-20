@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProdutoIndividualComponent } from '../produto-card/produto-card.component';
 import { Produto, ProdutoService } from '../../service/produto.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lista-produtos-app',
@@ -16,8 +17,11 @@ export class ProdutosComponent implements OnInit{
   listaProdutos: Produto[] = [];
   hoverProdutos: boolean = false;
 
-  constructor(private produtoService: ProdutoService) {}
+  constructor(private produtoService: ProdutoService, private navegar: Router) {}
  
+  redirecionar(): void {
+    this.navegar.navigate(['/produtos'])
+  }
 
   ngOnInit(): void {
     this.produtoService.getProducts().subscribe((data) => {
