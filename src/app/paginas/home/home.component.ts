@@ -18,7 +18,7 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
       transition('* => *', [
         query(':enter, :leave', [
           style({
-            position: 'absolute',
+            position: 'absolute', 
             width: '100%'
           })
         ], { optional: true }),

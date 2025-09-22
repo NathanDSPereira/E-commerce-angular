@@ -1,5 +1,38 @@
-<ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full">
-    <li *ngFor="let produto of listaProdutos" class="flex justify-center items-center">
-        <produto-card [produto]="produto"></produto-card>
-    </li>
-</ul>
+<section class="flex gap-8">
+    <aside class="flex flex-col gap-4">
+        <h3 class="text-lg text-[#003F62]">Categorias</h3>
+
+        <ul class="flex flex-col gap-3">
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="todas-categorias">
+                <label class="hover:cursor-pointer" for="todas-categorias">Todas as categorias</label>
+            </li>
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="acessorios">
+                <label class="hover:cursor-pointer" for="acessorios">Acessórios</label>
+            </li>
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="audio">
+                <label class="hover:cursor-pointer" for="audio">Áudio</label>
+            </li>
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="cameras">
+                <label class="hover:cursor-pointer" for="cameras">Câmeras</label>
+            </li>
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="wearables">
+                <label class="hover:cursor-pointer" for="wearables">Wearables</label>
+            </li>
+            <li class="text-lg text-[#222222] flex gap-2">
+                <input class="w-6" type="checkbox" id="armazenamento">
+                <label class="hover:cursor-pointer" for="armazenamento">Armazenamento</label>
+            </li>
+        </ul>
+    </aside>
+
+    <ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full">
+        <li *ngFor="let produto of listaProdutos" class="flex justify-center items-center">
+            <produto-card [produto]="produto"></produto-card>
+        </li>
+    </ul>
+</section>
