@@ -25,6 +25,10 @@ export class ListaProdutosComponent {
     console.log(this.listaProdutos);
   }
 
+  selecionarProdutosCategoria(categoria: any): void {
+    
+  }
+
   escrollarParaTopo(): void {
     window.scrollTo({top: 0, behavior: 'smooth'})
   }
