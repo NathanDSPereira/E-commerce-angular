@@ -1,5 +1,5 @@
 <section class="flex mt-14">
-    <aside class="flex flex-col gap-6 items-center">
+    <aside class="flex flex-col gap-6 items-center ml-4">
         <h3 class="text-2xl text-[#003F62]">Categorias</h3>
         
         <ul class="flex flex-col gap-4 pl-4">
@@ -8,7 +8,7 @@
                 <label class="hover:cursor-pointer" for="todas-categorias">Todas as categorias</label>
             </li>
             <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" (click)="mostraralerta($event)" type="checkbox" id="acessorios">
+                <input class="w-6" (change)="mostraralerta($event)" value="acessorios" type="checkbox" id="acessorios">
                 <label class="hover:cursor-pointer" for="acessorios">Acessórios</label>
             </li>
             <li class="text-lg text-[#222222] flex gap-2">
@@ -30,7 +30,7 @@
         </ul>
     </aside>
 
-    <ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full flex-1/2">
+    <ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full flex-2/5">
         <li *ngFor="let produto of listaProdutos" class="flex justify-center items-center">
             <produto-card [produto]="produto"></produto-card>
         </li>

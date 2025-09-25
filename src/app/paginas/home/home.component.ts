@@ -19,17 +19,17 @@ import { trigger, transition, style, animate, query } from '@angular/animations'
         query(':enter, :leave', [
           style({
             position: 'absolute', 
-            width: '100%'
+            width: '100%',
           })
         ], { optional: true }),
         query(':enter', [
           style({ opacity: 0, transform: 'translateY(10px)' })
         ], { optional: true }),
         query(':leave', [
-          animate('0.3s ease-in-out', style({ opacity: 0, transform: 'translateY(-10px)' }))
+          animate('0.2s ease-out', style({ opacity: 0, transform: 'translateY(-10px)'}))
         ], { optional: true }),
         query(':enter', [
-          animate('0.2s ease-in-out', style({ opacity: 1, transform: 'translateY(0)' }))
+          animate('0.4s ease-in', style({ opacity: 1, transform: 'translateY(0)' }))
         ], { optional: true })
       ])
     ])
