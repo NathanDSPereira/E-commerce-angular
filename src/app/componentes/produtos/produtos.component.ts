@@ -3,12 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProdutoIndividualComponent } from '../produto-card/produto-card.component';
 import { ProdutoService } from '../../service/produto.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Produto } from '../../interface/produto';
+
 
 @Component({
   selector: 'lista-produtos-app',
-  imports: [FormsModule, CommonModule, ProdutoIndividualComponent],
+  imports: [FormsModule, CommonModule, ProdutoIndividualComponent, RouterModule],
   standalone: true,
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.css'
@@ -19,10 +20,6 @@ export class ProdutosComponent implements OnInit{
   hoverProdutos: boolean = false;
 
   constructor(private produtoService: ProdutoService, private navegar: Router) {}
- 
-  redirecionar(): void {
-    this.navegar.navigate(['/produtos'])
-  }
 
   ngOnInit(): void {
     this.produtoService.getProducts().subscribe((data) => {
@@ -30,5 +27,4 @@ export class ProdutosComponent implements OnInit{
     })
     console.log(this.listaProdutos);
   }
-
 }
