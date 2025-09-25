@@ -3,7 +3,7 @@ import { ListaProdutosComponent } from './paginas/lista-produtos/lista-produtos.
 import { HomePageComponent } from './componentes/homePage/homepage.component';
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: 'home', component: HomePageComponent, data: {animation: 'Home'}},
     {path: 'produtos', component: ListaProdutosComponent, data: {animation: 'ListaProdutos'}}
 ];
