@@ -1,8 +1,8 @@
-<main class="bg-[#f4f4f4b0]">
+<main class="bg-[#f4f4f4b0]" [@routeAnimations]="prepareRoute(outlet)">
     <cabecalho-app></cabecalho-app>
 
     <section>
-        <router-outlet></router-outlet>
+        <router-outlet #outlet="outlet"></router-outlet>
     </section>
         
     <app-rodape (scrollar)="escrollarParaTopo()"></app-rodape>

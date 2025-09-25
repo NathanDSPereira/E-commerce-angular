@@ -2,20 +2,20 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { CabecalhoComponent } from '../../componentes/cabecalho/cabecalho.component';
-import { RodapeComponent } from '../../componentes/rodape/rodape.component';
-import { Produto, ProdutoService } from '../../service/produto.service';
+import { ProdutoService } from '../../service/produto.service';
+import { Produto } from '../../interface/produto';
 import { ProdutoIndividualComponent } from '../../componentes/produto-card/produto-card.component';
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [CommonModule,  FormsModule, CabecalhoComponent, RodapeComponent, ProdutoIndividualComponent],
+  imports: [CommonModule,  FormsModule, ProdutoIndividualComponent],
   templateUrl: './lista-produtos.component.html',
   styleUrl: './lista-produtos.component.css'
 })
 export class ListaProdutosComponent {
 
-  listaProdutos!: Produto[]; 
+  listaProdutos!: Produto[];
+  listaProdutosCategoria!: Produto[];
 
   constructor(private produtoService: ProdutoService) {}
   
@@ -25,6 +25,23 @@ export class ListaProdutosComponent {
       this.listaProdutos = data;
     })
     console.log(this.listaProdutos);
+  }
+
+  selecionarProdutosCategoria(categoria: any): void {
+    
+  }
+
+
+  mostraralerta(ev:  any): void {
+    alert("sarvee")
+    console.log(ev.target.id)
+    console.log(ev);
+    
+    this.listaProdutosCategoria = this.listaProdutos.filter(produto => {
+      return produto.categoria == ev;
+    })
+    console.log(this.listaProdutosCategoria);
+    
   }
 
   escrollarParaTopo(): void {

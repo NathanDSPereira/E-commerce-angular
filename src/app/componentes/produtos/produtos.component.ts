@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProdutoIndividualComponent } from '../produto-card/produto-card.component';
-import { Produto, ProdutoService } from '../../service/produto.service';
+import { ProdutoService } from '../../service/produto.service';
 import { Router } from '@angular/router';
+import { Produto } from '../../interface/produto';
 
 @Component({
   selector: 'lista-produtos-app',
