@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { Produto, ProdutoService } from '../../service/produto.service';
+import { ProdutoService } from '../../service/produto.service';
+import { Produto } from '../../interface/produto';
 import { ProdutoIndividualComponent } from '../../componentes/produto-card/produto-card.component';
 
 @Component({
@@ -13,7 +14,8 @@ import { ProdutoIndividualComponent } from '../../componentes/produto-card/produ
 })
 export class ListaProdutosComponent {
 
-  listaProdutos!: Produto[]; 
+  listaProdutos!: Produto[];
+  listaProdutosCategoria!: Produto[];
 
   constructor(private produtoService: ProdutoService) {}
   
@@ -26,6 +28,19 @@ export class ListaProdutosComponent {
   }
 
   selecionarProdutosCategoria(categoria: any): void {
+    
+  }
+
+
+  mostraralerta(ev:  any): void {
+    alert("sarvee")
+    console.log(ev.target.id)
+    console.log(ev);
+    
+    this.listaProdutosCategoria = this.listaProdutos.filter(produto => {
+      return produto.categoria == ev;
+    })
+    console.log(this.listaProdutosCategoria);
     
   }
 
