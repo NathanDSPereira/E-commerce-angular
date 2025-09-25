@@ -1,5 +1,7 @@
 {
   "routes": {
-    "/E-commerce-angular": {}
+    "/E-commerce-angular": {},
+    "/E-commerce-angular/home": {},
+    "/E-commerce-angular/produtos": {}
   }
 }
