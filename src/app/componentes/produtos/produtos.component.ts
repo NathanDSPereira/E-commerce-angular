@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProdutoIndividualComponent } from '../produto-card/produto-card.component';
 import { ProdutoService } from '../../service/produto.service';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Produto } from '../../interface/produto';
 
 
@@ -19,7 +19,7 @@ export class ProdutosComponent implements OnInit{
   listaProdutos: Produto[] = [];
   hoverProdutos: boolean = false;
 
-  constructor(private produtoService: ProdutoService, private navegar: Router) {}
+  constructor(private produtoService: ProdutoService) {}
 
   ngOnInit(): void {
     this.produtoService.getProducts().subscribe((data) => {

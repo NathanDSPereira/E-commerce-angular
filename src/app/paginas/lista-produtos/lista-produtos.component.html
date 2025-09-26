@@ -2,30 +2,10 @@
     <aside class="flex flex-col gap-6 items-center ml-4">
         <h3 class="text-2xl text-[#003F62]">Categorias</h3>
         
-        <ul class="flex flex-col gap-4 pl-4">
-            <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" type="checkbox" id="todas-categorias">
-                <label class="hover:cursor-pointer" for="todas-categorias">Todas as categorias</label>
-            </li>
-            <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" (change)="mostraralerta($event)" value="acessorios" type="checkbox" id="acessorios">
-                <label class="hover:cursor-pointer" for="acessorios">Acessórios</label>
-            </li>
-            <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" type="checkbox" id="audio">
-                <label class="hover:cursor-pointer" for="audio">Áudio</label>
-            </li>
-            <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" type="checkbox" id="cameras">
-                <label class="hover:cursor-pointer" for="cameras">Câmeras</label>
-            </li>
-            <li class="text-lg text-[#222222] flex gap-2">
-                <input class="w-6" type="checkbox" id="wearables">
-                <label class="hover:cursor-pointer" for="wearables">Wearables</label>
-            </li>
-            <li class="text-lg text-[#222222] flex gap-2 border-b-1 border-b-black pb-11">
-                <input class="w-6" type="checkbox" id="armazenamento">
-                <label class="hover:cursor-pointer" for="armazenamento">Armazenamento</label>
+        <ul class="flex flex-col gap-4 pl-4 mb-10">
+            <li class="text-lg text-[#222222] flex gap-2" *ngFor="let categoria of todasAsCategorias">
+                <input class="w-6" type="checkbox" [id]="categoria.nome" [value]="categoria.nome" (change)="selecionarProdutosCategoria($event)" [checked]="categoriasSelecionadas.includes(categoria.nome)">
+                <label [for]="categoria.nome" class="hover:cursor-pointer"> {{ categoria.nome }}</label>
             </li>
         </ul>
     </aside>
