@@ -17,18 +17,20 @@ export class ListaProdutosComponent {
   listaProdutos!: Produto[];
   todosOsProdutos!: Produto[];
   produtosComCategoriaSelecionada: Produto[] = [];
-  categoriaSelecionada: string = '';
-  produtoIgualCategoria!: boolean;
+
   opcaoMarcada!: boolean;
-  produtoIncluido!: boolean;
+
+  todasAsCategorias: string[] = [];
+  categoriasSelecionadas: string[] = [];
 
   constructor(private produtoService: ProdutoService) {}
   
 
    ngOnInit(): void {
     this.produtoService.getProducts().subscribe((data) => {
-      this.listaProdutos = data;
       this.todosOsProdutos = data;
+
+      this.listaProdutos = this.todosOsProdutos;
     })
   }
 
@@ -38,30 +40,10 @@ export class ListaProdutosComponent {
 
 
   mostraralerta(ev: any): void {
-    this.categoriaSelecionada = ev.target.defaultValue;
-    this.opcaoMarcada = ev.target.checked;
 
-    if(this.opcaoMarcada) {
-      this.listaProdutos.filter(produto => {
-        this.produtoIgualCategoria = produto.categoria.toLowerCase().trim() == this.categoriaSelecionada;
-              
-        if(this.produtoIgualCategoria) {
-            this.produtosComCategoriaSelecionada.filter(produtoCategoria => {
-            this.produtoIncluido = produtoCategoria.id == produto.id;
-            
-            
-          })          
-          // if(this.verificaProdutoIncluido(produto)) {
-          //   return  
-          // } else {
-          //   this.produtosComCategoriaSelecionada.push(produto);
-          // }
-          // this.listaProdutos = this.produtosComCategoriaSelecionada;
-        }
-      })
-    } else {
-      this.listaProdutos = this.todosOsProdutos;
-    }
+  //buscar as categorias do json, fazendo com um service, depois verificar se opção está marcada
+  //depois incluir no novo array os produtos que tiverem a ou as categorias selecionadas,
+  //então preciso saber quais categorias o usuário selecionou
   }
   
   escrollarParaTopo(): void {
