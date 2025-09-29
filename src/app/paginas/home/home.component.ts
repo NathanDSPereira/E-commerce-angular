@@ -8,15 +8,11 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'home-app',
-  imports: [FormsModule, CabecalhoComponent, CommonModule, RodapeComponent, RouterOutlet],
+  imports: [FormsModule, CommonModule, RouterOutlet],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 
 export class HomeComponent{
-
-  escrollarParaTopo(): void {
-    window.scrollTo({top: 0, behavior: 'smooth'})
-  }
 }
