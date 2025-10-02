@@ -1,35 +1,37 @@
 <section class="bg-[#282421e6] flex justify-center items-center h-screen w-screen">
-    <div class="bg-[#f0f0f0e6] rounded-4xl w-2/3 flex">
-        <div class="w-1/2 rounded-4xl p-4 flex items-center">
+    <div class="bg-[#f0f0f0e6] rounded-4xl w-2/3 flex p-1">
+        <div class="w-1/2 rounded-4xl p-3 flex items-center">
             <img src="assets/images/imagem-login.png" alt="">
         </div>
     
-        <div class="flex flex-col items-center w-1/2 p-10 gap-14">
+        <div class="flex flex-col items-center w-1/2 gap-14">
             <div class="flex items-center flex-col">
-                <h3 class="font-semibold text-7xl text-[#1C1C1C]">Bem vindo</h3>
+                <h3 class="font-semibold text-7xl text-[#1C1C1C] p-4">Bem vindo</h3>
                 <p class="text-lg">estamos felizes em reencontrá-lo!</p>
             </div>
 
-            <form class="w-1/2 p-5 flex flex-col items-center gap-6">
+            <form [formGroup]="contatoForm" (ngSubmit)="entrar()" class="w-1/2 p-5 flex flex-col items-center gap-6">
                 <div class="flex items-center gap-2">
                     <label for="usuario">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                     </label>
-                    <input type="text" id="usuario" class="w-96 h-16 bg-[#F2F2F2] text-lg placeholder:font-semibold rounded-lg p-3" placeholder="Usuário">
+                    <input formControlName = 'usuario' type="text" id="usuario" class="w-96 h-16 bg-[#F2F2F2] text-lg placeholder:font-semibold rounded-lg p-3" placeholder="Usuário">
                 </div>
             
                 <div class="flex items-center gap-2">
                     <label for="senha">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-lock-icon lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </label>
-                    <input type="password" id="senha" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Senha">
+                    <input formControlName = 'senha' type="password" id="senha" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Senha">
                 </div>
                 
-                <button class="w-80 h-14 bg-[#282421e6] rounded-lg mt-11 font-semibold  text-white text-2xl text-center hover:cursor-pointer hover:bg-[#F4A261] hover:text-black transition duration-500">Entrar</button>
+                <button type="submit" class="w-80 h-14 bg-[#282421e6] rounded-lg mt-11 font-semibold  text-white text-2xl text-center hover:cursor-pointer hover:bg-[#F4A261] hover:text-black transition duration-500">Entrar</button>
 
                 <p class="font-semibold">OU</p>
 
-                <button class="w-80 h-14 bg-[#282421e6] rounded-lg font-semibold  text-white text-2xl text-center hover:cursor-pointer hover:bg-[#F4A261] hover:text-black transition duration-500">Registrar-se</button>
+                <a [routerLink]="['/registrar']">
+                    <button class="w-80 h-14 bg-[#282421e6] rounded-lg font-semibold  text-white text-2xl text-center hover:cursor-pointer hover:bg-[#F4A261] hover:text-black transition duration-500">Registrar-se</button>
+                </a>
             </form>
         </div>
     </div>

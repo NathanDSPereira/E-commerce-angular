@@ -3,9 +3,11 @@ import { ListaProdutosComponent } from './paginas/lista-produtos/lista-produtos.
 import { HomePageComponent } from './componentes/homePage/homepage.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { LayoutComponent } from './componentes/layout/layout.component';
+import { RegistrarComponent } from './paginas/registrar/registrar.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
+    {path: 'registrar', component: RegistrarComponent},
 
 
     { 
@@ -14,7 +16,7 @@ export const routes: Routes = [
         children: [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: HomePageComponent},
-            {path: 'produtos', component: ListaProdutosComponent} 
+            {path: 'produtos', component: ListaProdutosComponent}
         ]
     }
 ]
