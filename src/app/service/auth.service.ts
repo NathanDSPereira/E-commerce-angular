@@ -16,7 +16,7 @@ export class AuthService {
   constructor() { }
   
   logar(dadosUsuario: Credenciais): Observable<{token: string}> {
-    this.usuarioValido = dadosUsuario.usuario == this.usuario_teste &&
+    this.usuarioValido = dadosUsuario.email == this.usuario_teste &&
         dadosUsuario.senha == this.senha_teste;
     
     if(this.usuarioValido) {
@@ -35,7 +35,16 @@ export class AuthService {
     }
   }
   
+
   private setToken(token: string):void {
-    localStorage.setItem(this.token_chave, token);nn
+    localStorage.setItem(this.token_chave, token);
+  }
+
+  deslogar(): void {
+    localStorage.removeItem(this.token_chave);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.token_chave);
   }
 }

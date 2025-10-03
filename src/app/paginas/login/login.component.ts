@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink} from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,10 +15,10 @@ import { RouterLink} from '@angular/router';
 export class LoginComponent {
   contatoForm: FormGroup;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.contatoForm = new FormGroup({
-      usuario: new FormControl(''),
-      senha: new FormControl('')
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
   }
 

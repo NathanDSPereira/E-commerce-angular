@@ -12,10 +12,10 @@
 
             <form [formGroup]="contatoForm" (ngSubmit)="entrar()" class="w-1/2 p-5 flex flex-col items-center gap-6">
                 <div class="flex items-center gap-2">
-                    <label for="usuario">
+                    <label for="email">
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                     </label>
-                    <input formControlName = 'usuario' type="text" id="usuario" class="w-96 h-16 bg-[#F2F2F2] text-lg placeholder:font-semibold rounded-lg p-3" placeholder="Usuário">
+                    <input formControlName = 'email' type="email" id="email" class="w-96 h-16 bg-[#F2F2F2] text-lg placeholder:font-semibold rounded-lg p-3" placeholder="E-mail">
                 </div>
             
                 <div class="flex items-center gap-2">
