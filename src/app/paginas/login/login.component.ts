@@ -14,6 +14,7 @@ import { AuthService } from '../../service/auth.service';
 
 export class LoginComponent {
   contatoForm: FormGroup;
+  mensagemErro?: string;
 
   constructor(private authService: AuthService, private route: Router) {
     this.contatoForm = new FormGroup({
@@ -30,7 +31,7 @@ export class LoginComponent {
           this.route.navigate(['/home']);
         },
         error: (response) => {
-          alert(response);
+          this.mensagemErro = response;
         }
       });
     }
