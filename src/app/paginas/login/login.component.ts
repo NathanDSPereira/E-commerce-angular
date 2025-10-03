@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RouterLink} from '@angular/router';
+import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { AuthService } from '../../service/auth.service';
 export class LoginComponent {
   contatoForm: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private route: Router) {
     this.contatoForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       senha: new FormControl('', [Validators.required, Validators.minLength(3)])
@@ -23,7 +23,16 @@ export class LoginComponent {
   }
 
   entrar(): void {
-    console.log(this.contatoForm.value);
-    
+    if(this.contatoForm.valid) {
+      this.authService.logar(this.contatoForm.value).subscribe({
+        next: (response) => {
+          console.log("Credenciais validas");
+          this.route.navigate(['/home']);
+        },
+        error: (response) => {
+          alert(response);
+        }
+      });
+    }
   }
 }
