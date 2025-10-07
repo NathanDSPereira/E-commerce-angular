@@ -40,6 +40,10 @@ export class AuthService {
     localStorage.setItem(this.token_chave, token);
   }
 
+  estaLogado(): boolean {
+    return !!this.getToken();
+  }
+
   deslogar(): void {
     localStorage.removeItem(this.token_chave);
   }
