@@ -2,13 +2,13 @@
 export default {
   bootstrap: () => import('./main.server.mjs').then(m => m.default),
   inlineCriticalCss: true,
-  baseHref: '/E-commerce-angular/',
+  baseHref: '/E-commerce-agular/',
   locale: undefined,
   routes: undefined,
   entryPointToBrowserMapping: {},
   assets: {
-    'index.csr.html': {size: 7812, hash: 'c9cc0b73a68b3911c9793c65624be6ddf6f4dde5c28c1507218651a31069c816', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1027, hash: '4a0dbf6fa460bf69d4bf2e1f3b09a378f37f548f2279b12811504f7d901f987e', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'styles-XXFKH5JX.css': {size: 27477, hash: 'bMFRs0+OL0c', text: () => import('./assets-chunks/styles-XXFKH5JX_css.mjs').then(m => m.default)}
+    'index.csr.html': {size: 7811, hash: '5b49b16f784763c607388cb672452b8c51f7111568acddbb4702194f8171ad8f', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1026, hash: '5b0c69f017f7df168717ace3697c7e5c7d467adcf90999b4b29bb5746bca3d90', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'styles-52M4VQC6.css': {size: 28099, hash: 'RLH9ja0cWKA', text: () => import('./assets-chunks/styles-52M4VQC6_css.mjs').then(m => m.default)}
   },
 };
