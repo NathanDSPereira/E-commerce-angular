@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/E-commerce-agular',
+  basePath: '/E-commerce-angular',
   supportedLocales: {
   "en-US": ""
 },

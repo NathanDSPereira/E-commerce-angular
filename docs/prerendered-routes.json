@@ -1,10 +1,10 @@
 {
   "routes": {
-    "/E-commerce-agular": {},
-    "/E-commerce-agular/home": {},
-    "/E-commerce-agular/login": {},
-    "/E-commerce-agular/perfil": {},
-    "/E-commerce-agular/produtos": {},
-    "/E-commerce-agular/registrar": {}
+    "/E-commerce-angular": {},
+    "/E-commerce-angular/home": {},
+    "/E-commerce-angular/login": {},
+    "/E-commerce-angular/perfil": {},
+    "/E-commerce-angular/produtos": {},
+    "/E-commerce-angular/registrar": {}
   }
 }
