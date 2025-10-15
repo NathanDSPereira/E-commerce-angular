@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <input formControlName = 'telefone' type="tel" id="telefone" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Telefone">
+                    <input formControlName = 'telefone' type="tel" oninput="validarTelefone()" mask="(00) 0000-0000 || (00) 00000-0000" id="telefone" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Telefone">
                 </div>
 
                 <div class="flex items-center gap-2">

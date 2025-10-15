@@ -34,6 +34,8 @@ export class LoginComponent {
           this.mensagemErro = response;
         }
       });
+    } else {
+      this.mensagemErro = 'Por favor, preencha o login!'
     }
   }
 }

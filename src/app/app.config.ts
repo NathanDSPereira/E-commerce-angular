@@ -4,13 +4,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes, withHashLocation(), withInMemoryScrolling({ scrollPositionRestoration: 'top'})), 
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
-    provideAnimations()
+    provideEnvironmentNgxMask()
   ]
 };
