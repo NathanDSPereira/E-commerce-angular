@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -23,19 +24,23 @@ export class LoginComponent {
     })
   }
 
+  // entrar(): void {
+  //   if(this.contatoForm.valid) {
+  //     this.authService.verificaUsuarioLocalStorage(this.contatoForm.value).subscribe({
+  //       next: (response) => {
+  //         this.route.navigate(['/home']);
+  //       },
+  //       error: (response) => {
+  //         this.mensagemErro = response;
+  //       }
+  //     });
+  //   } else {
+  //     this.mensagemErro = 'Por favor, preencha o login!'
+  //   }
+  // }
   entrar(): void {
     if(this.contatoForm.valid) {
-      this.authService.logar(this.contatoForm.value).subscribe({
-        next: (response) => {
-          console.log("Credenciais validas");
-          this.route.navigate(['/home']);
-        },
-        error: (response) => {
-          this.mensagemErro = response;
-        }
-      });
-    } else {
-      this.mensagemErro = 'Por favor, preencha o login!'
+      this.authService.verificaUsuarioLocalStorage(this.contatoForm.value);      
     }
   }
 }

@@ -1,54 +1,92 @@
 import { Injectable } from '@angular/core';
-import { Credenciais } from '../interface/credenciais';
-import { delay, Observable, of, pipe, tap } from 'rxjs';
+import { delay, Observable, of, tap } from 'rxjs';
+import { Usuario } from '../interface/usuario';
+import { getLocaleCurrencyCode } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  private readonly token_chave = 'auth_token';
+  private readonly db_users = 'db_users'
+  private readonly chave_user = 'auth_user'
+
+  private listaUsuarios: Usuario[] = [];
+  dadosJSON?: string | null;
+
   private usuario_teste: string = 'usuario@exemplo.com';
   private senha_teste: string = 'senha_teste';
+  
   usuarioValido?: boolean;
   private tokenExemploValido?: string;
 
   constructor() { }
   
-  logar(dadosUsuario: Credenciais): Observable<{token: string}> {
-    this.usuarioValido = dadosUsuario.email == this.usuario_teste &&
-        dadosUsuario.senha == this.senha_teste;
+  // verificaLocalStorage(dadosUsuario: Usuario): Observable<{token: string}> {
+  //   // this.getUsersDB();
     
-    if(this.usuarioValido) {
-      this.tokenExemploValido = 'JWT.SIMULADO.TOKEN-PARA-PORTFOLIO123';
+  //   console.log(this.getLocalStorage());
+  //   console.log(this.listaUsuarios);
+    
+  //   this.listaUsuarios.map((usuario) => {console.log(usuario)});
+    
+    
+  //   this.usuarioValido = true
+    
+  //   if(this.usuarioValido) {
+  //     this.tokenExemploValido = 'JWT.SIMULADO.TOKEN-PARA-PORTFOLIO123';
 
-      return of({token: this.tokenExemploValido}).pipe(
-        delay(800),
-        tap((response) => {
-          this.setToken(response.token);
-        })
-      )
+  //     return of({token: this.tokenExemploValido}).pipe(
+  //       delay(800),
+  //       tap((response) => {
+  //         this.setSessionStorage(response.token);
+  //       })
+  //     )
+  //   } else {
+  //     return new Observable( obs => {
+  //       obs.error("Credênciais inválidas. Tente 'usuario@exemplo.com' e 'senha_teste'")
+  //     });
+  //   }
+  // }
+
+  //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
+
+  verificaUsuarioLocalStorage(usuario: Usuario): void {
+    this.dadosJSON = this.getLocalStorage();
+
+    if(this.dadosJSON == null) {
+      this.listaUsuarios = [];
+      this.setLocalStorage(usuario)
     } else {
-      return new Observable( obs => {
-        obs.error("Credênciais inválidas. Tente 'usuario@exemplo.com' e 'senha_teste'")
-      });
+      this.listaUsuarios = JSON.parse(this.dadosJSON);
+      console.log("salve, tem registro");
     }
+
+    console.log(this.getLocalStorage());
+    
   }
   
-
-  private setToken(token: string):void {
-    localStorage.setItem(this.token_chave, token);
+  private setSessionStorage(token: string):void {
+    sessionStorage.setItem(this.chave_user, token);
   }
 
+  getSessionStorage(): string | null {
+    return sessionStorage.getItem(this.chave_user);
+  }
+  
   estaLogado(): boolean {
-    return !!this.getToken();
+    return !!this.getSessionStorage();
   }
 
   deslogar(): void {
-    localStorage.removeItem(this.token_chave);
+    sessionStorage.removeItem(this.chave_user);
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.token_chave);
+  getLocalStorage(): string | null {
+    return localStorage.getItem(this.db_users);
+  }
+
+  private setLocalStorage(user: Usuario): void {
+    localStorage.setItem(this.db_users, JSON.stringify(user));
   }
 }
