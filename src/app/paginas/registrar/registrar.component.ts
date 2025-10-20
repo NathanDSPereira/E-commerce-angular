@@ -4,6 +4,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { RouterLink, Router } from '@angular/router';
 
 import { NgxMaskDirective } from 'ngx-mask';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-registrar',
@@ -14,7 +15,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 export class RegistrarComponent {
   contatoForm: FormGroup;
 
-  constructor(private route: Router) {
+  constructor(private route: Router, private authService: AuthService) {
     this.contatoForm = new FormGroup({
       nome: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -24,8 +25,9 @@ export class RegistrarComponent {
   }
 
   registrar(): void {
-
-    this.route.navigate(['/login'])
+    if(this.contatoForm.valid) {
+      this.authService.verificaRegistrar(this.contatoForm.value)
+    }
   }
 
   validarTelefone(): void {

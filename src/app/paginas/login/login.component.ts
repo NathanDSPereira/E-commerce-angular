@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../service/auth.service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -40,7 +39,7 @@ export class LoginComponent {
   // }
   entrar(): void {
     if(this.contatoForm.valid) {
-      this.authService.verificaUsuarioLocalStorage(this.contatoForm.value);      
+      this.authService.verificaLogin(this.contatoForm.value);      
     }
   }
 }

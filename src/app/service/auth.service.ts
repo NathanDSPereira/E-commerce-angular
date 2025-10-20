@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { delay, Observable, of, tap } from 'rxjs';
 import { Usuario } from '../interface/usuario';
-import { getLocaleCurrencyCode } from '@angular/common';
+import { Credenciais } from '../interface/credenciais';
 
 @Injectable({
   providedIn: 'root'
@@ -51,20 +51,27 @@ export class AuthService {
 
   //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
 
-  verificaUsuarioLocalStorage(usuario: Usuario): void {
+  verificaLogin(credenciais: Credenciais): void {
+  }
+
+  verificaRegistrar(usuario: Usuario): void {
     this.dadosJSON = this.getLocalStorage();
 
     if(this.dadosJSON == null) {
-      this.listaUsuarios = [];
       this.setLocalStorage(usuario)
-    } else {
-      this.listaUsuarios = JSON.parse(this.dadosJSON);
-      console.log("salve, tem registro");
     }
-
-    console.log(this.getLocalStorage());
-    
   }
+
+  obterTodosOsUsuarios(): Usuario[] {
+    this.dadosJSON = this.getLocalStorage();
+
+    if(this.dadosJSON == null) {
+      return this.listaUsuarios = [];
+    } else {
+      return this.listaUsuarios = JSON.parse(this.dadosJSON)
+    }
+  }
+  
   
   private setSessionStorage(token: string):void {
     sessionStorage.setItem(this.chave_user, token);
