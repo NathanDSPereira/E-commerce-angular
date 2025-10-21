@@ -11,13 +11,14 @@ export class AuthService {
   private readonly db_users = 'db_users'
   private readonly chave_user = 'auth_user'
 
-  private listaUsuarios: Usuario[] = [];
+  private listaUsuariosArray: Usuario[] = [];
+  private listaUsuariosString: string = '';
   dadosJSON?: string | null;
 
   private usuario_teste: string = 'usuario@exemplo.com';
   private senha_teste: string = 'senha_teste';
   
-  usuarioValido?: boolean;
+  usuarioValido?: Usuario;
   private tokenExemploValido?: string;
 
   constructor() { }
@@ -55,24 +56,42 @@ export class AuthService {
   }
 
   verificaRegistrar(usuario: Usuario): void {
-    this.dadosJSON = this.getLocalStorage();
+    this.listaUsuariosArray = this.obterTodosOsUsuarios();
 
-    if(this.dadosJSON == null) {
-      this.setLocalStorage(usuario)
+
+    if(this.listaUsuariosArray) {
+      this.usuarioValido = this.listaUsuariosArray.find(user => user.email == usuario.email)
+      
+      if(this.usuarioValido) {
+        console.log("Usuário já cadastrado");
+      } else {
+        this.salvarNovoUsuario(usuario);
+      }
     }
+  }
+
+  private salvarNovoUsuario(novoUsuario: Usuario): void {
+    this.listaUsuariosArray = this.obterTodosOsUsuarios();
+
+    this.listaUsuariosArray.push(novoUsuario)
+    this.listaUsuariosString = JSON.stringify(this.listaUsuariosArray);
+
+    this.setLocalStorage(this.listaUsuariosString);
   }
 
   obterTodosOsUsuarios(): Usuario[] {
     this.dadosJSON = this.getLocalStorage();
 
     if(this.dadosJSON == null) {
-      return this.listaUsuarios = [];
+      return [];
     } else {
-      return this.listaUsuarios = JSON.parse(this.dadosJSON)
+      return JSON.parse(this.dadosJSON) as Usuario[]
     }
   }
-  
-  
+
+
+
+
   private setSessionStorage(token: string):void {
     sessionStorage.setItem(this.chave_user, token);
   }
@@ -93,7 +112,7 @@ export class AuthService {
     return localStorage.getItem(this.db_users);
   }
 
-  private setLocalStorage(user: Usuario): void {
-    localStorage.setItem(this.db_users, JSON.stringify(user));
+  private setLocalStorage(users: String): void {
+    localStorage.setItem(this.db_users, JSON.stringify(users));
   }
 }
