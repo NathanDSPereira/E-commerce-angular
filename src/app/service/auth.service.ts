@@ -57,13 +57,14 @@ export class AuthService {
 
   verificaRegistrar(usuario: Usuario): void {
     this.listaUsuariosArray = this.obterTodosOsUsuarios();
-
-
+    console.log(this.listaUsuariosArray, typeof this.listaUsuariosArray)
+    
     if(this.listaUsuariosArray) {
       this.usuarioValido = this.listaUsuariosArray.find(user => user.email == usuario.email)
-      
+
       if(this.usuarioValido) {
         console.log("Usuário já cadastrado");
+        return
       } else {
         this.salvarNovoUsuario(usuario);
       }
@@ -85,7 +86,7 @@ export class AuthService {
     if(this.dadosJSON == null) {
       return [];
     } else {
-      return JSON.parse(this.dadosJSON) as Usuario[]
+      return JSON.parse(JSON.parse(this.dadosJSON)) as Usuario[]
     }
   }
 
