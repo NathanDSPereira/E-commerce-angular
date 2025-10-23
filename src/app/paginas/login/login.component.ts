@@ -22,24 +22,19 @@ export class LoginComponent {
       senha: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
   }
-
-  // entrar(): void {
-  //   if(this.contatoForm.valid) {
-  //     this.authService.verificaUsuarioLocalStorage(this.contatoForm.value).subscribe({
-  //       next: (response) => {
-  //         this.route.navigate(['/home']);
-  //       },
-  //       error: (response) => {
-  //         this.mensagemErro = response;
-  //       }
-  //     });
-  //   } else {
-  //     this.mensagemErro = 'Por favor, preencha o login!'
-  //   }
-  // }
+  
   entrar(): void {
     if(this.contatoForm.valid) {
-      this.authService.verificaLogin(this.contatoForm.value);      
+      this.authService.verificaLogin(this.contatoForm.value).subscribe({
+        next: (response) => {
+          this.route.navigate(['/home'])
+        },
+        error: (response) => {
+          this.mensagemErro = response
+        }
+      })
+    } else {
+      this.mensagemErro = 'Por favor, preencha o campos!'
     }
   }
 }

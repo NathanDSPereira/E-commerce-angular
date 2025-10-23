@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { delay, Observable, of, tap } from 'rxjs';
 import { Usuario } from '../interface/usuario';
 import { Credenciais } from '../interface/credenciais';
+import { EmailValidator } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class AuthService {
   private senha_teste: string = 'senha_teste';
   
   usuarioValido?: Usuario;
+  usuarioCadastradoNoLocalStorage?: Usuario;
   private tokenExemploValido?: string;
 
   constructor() { }
@@ -52,24 +54,44 @@ export class AuthService {
 
   //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
 
-  verificaLogin(credenciais: Credenciais): void {
+  verificaLogin(credenciais: Usuario): Observable<{name: string | undefined, telefone: string | undefined, email: string | undefined}> {
+    this.listaUsuariosArray = this.obterTodosOsUsuarios();
+
+    this.usuarioCadastradoNoLocalStorage = this.listaUsuariosArray.find((user) => user.email == credenciais.email && user.senha == credenciais.senha);
+
+    if(this.usuarioCadastradoNoLocalStorage) {
+      return of ({name: this.usuarioCadastradoNoLocalStorage.nome, telefone: this.usuarioCadastradoNoLocalStorage.telefone, email: this.usuarioCadastradoNoLocalStorage.email}).pipe(
+        delay(800),
+        tap((response) => {
+          this.setSessionStorage(JSON.stringify(response))
+        })
+      )
+    } else {
+      return new Observable( obs => {
+        obs.error("Credenciais erradas!")
+      })
+    }
+
   }
 
   verificaRegistrar(usuario: Usuario): void {
     this.listaUsuariosArray = this.obterTodosOsUsuarios();
-    console.log(this.listaUsuariosArray, typeof this.listaUsuariosArray)
     
     if(this.listaUsuariosArray) {
       this.usuarioValido = this.listaUsuariosArray.find(user => user.email == usuario.email)
-
+    
       if(this.usuarioValido) {
         console.log("Usuário já cadastrado");
+        alert("Usuário já cadastrado com esse e-mail")
         return
       } else {
         this.salvarNovoUsuario(usuario);
+        alert("Usuário cadastrado com sucesso!");
+        return
       }
     }
   }
+  
 
   private salvarNovoUsuario(novoUsuario: Usuario): void {
     this.listaUsuariosArray = this.obterTodosOsUsuarios();

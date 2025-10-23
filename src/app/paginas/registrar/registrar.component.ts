@@ -27,10 +27,9 @@ export class RegistrarComponent {
   registrar(): void {
     if(this.contatoForm.valid) {
       this.authService.verificaRegistrar(this.contatoForm.value)
+      this.contatoForm.reset()
+    } else {
+      alert("Por favor, preencha todos os campos do formulário!")
     }
-  }
-
-  validarTelefone(): void {
-
   }
 }
