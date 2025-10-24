@@ -16,7 +16,7 @@ export class PerfilComponent implements OnInit{
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.dadosUsuarioString = JSON.parse(this.authService.getSessionStorage());
+    this.dadosUsuarioString = this.authService.getSessionStorage();
     console.log(this.dadosUsuarioString, ", type: ", typeof this.dadosUsuarioString)
   }
 }

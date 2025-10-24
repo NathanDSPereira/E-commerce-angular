@@ -7,8 +7,8 @@ export default {
   routes: undefined,
   entryPointToBrowserMapping: {},
   assets: {
-    'index.csr.html': {size: 7854, hash: '6dae590a1a966395186d174ae66efaff9b8e01e4ed81a7c78b6d2bef902e9dab', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1027, hash: '2f7b3d4137ca760a01b6e5374a14718030081c26797a2c7721ca32c3a2a011eb', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'styles-RWJLOLRM.css': {size: 29893, hash: 'GfOOrI57HYo', text: () => import('./assets-chunks/styles-RWJLOLRM_css.mjs').then(m => m.default)}
+    'index.csr.html': {size: 6622, hash: 'e09c619a3a1a757ce99bacebe0b3ea7742d986d49351ac410504f00e4b0f688a', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 1027, hash: '4d9886f1a056dbd1662053bb965fb7e64667f90d9cb1cebee670ebbfac97d44a', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'styles-SKEEDWPW.css': {size: 26081, hash: 'obtfQinOt1E', text: () => import('./assets-chunks/styles-SKEEDWPW_css.mjs').then(m => m.default)}
   },
 };
