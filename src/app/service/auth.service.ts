@@ -16,11 +16,10 @@ export class AuthService {
   private listaUsuariosString: string = '';
   dadosJSON?: string | null;
 
-  private usuario_teste: string = 'usuario@exemplo.com';
-  private senha_teste: string = 'senha_teste';
-  
   usuarioValido?: Usuario;
   usuarioCadastradoNoLocalStorage?: Usuario;
+  usuarioSessionStorage?: Credenciais;
+
   private tokenExemploValido?: string;
 
   constructor() { }
@@ -54,16 +53,24 @@ export class AuthService {
 
   //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
 
-  verificaLogin(credenciais: Usuario): Observable<{name: string | undefined, telefone: string | undefined, email: string | undefined}> {
+  verificaLogin(credenciais: Usuario): Observable<Credenciais> {
     this.listaUsuariosArray = this.obterTodosOsUsuarios();
 
     this.usuarioCadastradoNoLocalStorage = this.listaUsuariosArray.find((user) => user.email == credenciais.email && user.senha == credenciais.senha);
 
     if(this.usuarioCadastradoNoLocalStorage) {
-      return of ({name: this.usuarioCadastradoNoLocalStorage.nome, telefone: this.usuarioCadastradoNoLocalStorage.telefone, email: this.usuarioCadastradoNoLocalStorage.email}).pipe(
+      this.tokenExemploValido = 'JWT.SIMULADO.TOKEN-PARA-PORTFOLIO123'
+      
+      this.usuarioSessionStorage = {
+        nome: this.usuarioCadastradoNoLocalStorage.nome, 
+        telefone: this.usuarioCadastradoNoLocalStorage.telefone, 
+        email: this.usuarioCadastradoNoLocalStorage.email, 
+        token: this.tokenExemploValido
+      }
+      return of (this.usuarioSessionStorage).pipe(
         delay(800),
         tap((response) => {
-          this.setSessionStorage(JSON.stringify(response))
+          this.setSessionStorage(response)
         })
       )
     } else {
@@ -115,8 +122,8 @@ export class AuthService {
 
 
 
-  private setSessionStorage(token: string):void {
-    sessionStorage.setItem(this.chave_user, token);
+  private setSessionStorage(user_inf: Credenciais):void {
+    sessionStorage.setItem(this.chave_user, JSON.stringify(user_inf));
   }
 
   getSessionStorage(): string | null {

@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
-import { Usuario } from '../../interface/usuario';
+import { Credenciais } from '../../interface/credenciais';
 
 @Component({
   selector: 'app-perfil',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './perfil.component.html',
   styleUrl: './perfil.component.css'
 })
-export class PerfilComponent {
-
-  usuarioLogado?: Usuario;
+export class PerfilComponent implements OnInit{
+  dadosUsuarioString?: string | null;
+  dadosUsuarioObjeto?: Credenciais;
 
   constructor(private authService: AuthService) {}
 
+  ngOnInit(): void {
+    this.dadosUsuarioString = JSON.parse(this.authService.getSessionStorage());
+    console.log(this.dadosUsuarioString, ", type: ", typeof this.dadosUsuarioString)
+  }
 }

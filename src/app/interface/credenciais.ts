@@ -1,4 +1,6 @@
 export interface Credenciais {
+    nome: string,
+    telefone: string,
     email: string,
-    senha: string
+    token: string
 }
