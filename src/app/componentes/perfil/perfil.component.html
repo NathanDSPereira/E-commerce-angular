@@ -3,7 +3,7 @@
         <aside class="border-r-[#888888] border-r-[1px] pr-11">
             <div class="h-48 flex flex-col items-center gap-3 rounded-4xl">
                 <img src="assets/images/perfil.png" alt="imagem de um boneco de perfil" class="h-2/3 rounded-full border-blue-900 border-4">
-                <p class="font-semibold text-2xl">Nome usuario</p>
+                <p class="font-semibold text-2xl">{{this.dadosUsuarioArray?.nome}}</p>
             </div>
             <div class="mt-5">
                 <ul class="flex flex-col gap-2 justify-center text-center">
@@ -43,15 +43,15 @@
             <div class="bg-[#ffffff] border-[1px] border-[#88888871] shadow rounded-2xl w-full p-6">
                 <div class="flex flex-col gap-1 text-lg mb-4">
                     <h4 class="">Nome</h4>
-                    <p class="font-semibold">Nathan</p>
+                    <p class="font-semibold">{{this.dadosUsuarioArray?.nome}}</p>
                 </div>
                 <div class="flex flex-col gap-1 text-lg mb-4">
                     <h4 class="">E-mail</h4>
-                    <p class="font-semibold">nathan</p>
+                    <p class="font-semibold">{{this.dadosUsuarioArray?.email}}</p>
                 </div>
                 <div class="flex flex-col gap-1 text-lg mb-4">
                     <h4 class="">Telefone</h4>
-                    <p class="font-semibold">26/12/2005</p>
+                    <p class="font-semibold">{{this.dadosUsuarioArray?.telefone}}</p>
                 </div>
             </div>
         </div>

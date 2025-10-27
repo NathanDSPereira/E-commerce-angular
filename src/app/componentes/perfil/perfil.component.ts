@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { Credenciais } from '../../interface/credenciais';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -10,13 +11,20 @@ import { Credenciais } from '../../interface/credenciais';
   styleUrl: './perfil.component.css'
 })
 export class PerfilComponent implements OnInit{
-  dadosUsuarioString?: string | null;
-  dadosUsuarioObjeto?: Credenciais;
+  dadosUrl?: string | null
+  dadosUsuarioArray?: Credenciais;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.dadosUsuarioString = this.authService.getSessionStorage();
-    console.log(this.dadosUsuarioString, ", type: ", typeof this.dadosUsuarioString)
+    this.route.queryParams.subscribe((params) => {
+      this.dadosUrl = params['dados'];
+
+      if(this.dadosUrl) {
+        this.dadosUsuarioArray = JSON.parse(this.dadosUrl)
+      }
+    })
+  
+    console.log(this.dadosUsuarioArray, typeof this.dadosUsuarioArray)
   }
 }
