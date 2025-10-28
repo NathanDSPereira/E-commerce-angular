@@ -39,7 +39,11 @@
         </aside>
     
         <div class="flex flex-col flex-1/2 gap-6">
-            <h3 class="text-4xl font-semibold">Perfil</h3>
+            <div class="flex justify-between items-center">
+                <h3 class="text-4xl font-semibold">Perfil</h3>
+                <button (click)="deslogar()" [routerLink]="['/home']" class="cursor-pointer bg-[#F4A261] hover:bg-[#ff9138] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-black font-semibold h-14">Sair</button>
+            </div>
+
             <div class="bg-[#ffffff] border-[1px] border-[#88888871] shadow rounded-2xl w-full p-6">
                 <div class="flex flex-col gap-1 text-lg mb-4">
                     <h4 class="">Nome</h4>

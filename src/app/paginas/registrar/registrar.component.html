@@ -7,20 +7,24 @@
             </div>
 
             <form [formGroup]="contatoForm" (ngSubmit)="registrar()" class="flex flex-col items-center gap-6">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 flex-col">
                     <input formControlName='nome' type="text" id="nome" class="w-96 h-16 bg-[#F2F2F2] text-lg placeholder:font-semibold rounded-lg p-3" placeholder="Nome completo">
+                    <p class="text-red-600" *ngIf="contatoForm.get('nome')?.errors && contatoForm.get('nome')?.touched">Mínimo 4 caracteres</p>
                 </div>
             
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 flex-col">
                     <input formControlName = 'email' type="email" id="email" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="E-mail">
+                    <p class="text-red-600" *ngIf="contatoForm.get('email')?.errors && contatoForm.get('email')?.touched">Formato inválido!</p>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 flex-col">
                     <input formControlName = 'telefone' type="tel" oninput="validarTelefone()" mask="(00) 0000-0000 || (00) 00000-0000" id="telefone" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Telefone">
+                    <p class="text-red-600" *ngIf="contatoForm.get('telefone')?.errors && contatoForm.get('telefone')?.touched">Mínimo 10 números</p>
                 </div>
 
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 flex-col">
                     <input formControlName = 'senha' type="password" id="senha" class="w-96 h-16 p-3 text-lg placeholder:font-semibold bg-[#F2F2F2] rounded-lg" placeholder="Senha">
+                    <p class="text-red-600" *ngIf="contatoForm.get('senha')?.errors && contatoForm.get('senha')?.touched">Mínimo 4 caracteres</p>
                 </div>
 
                 <div class="pb-5 pt-5">

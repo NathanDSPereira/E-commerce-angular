@@ -20,7 +20,7 @@ export class RegistrarComponent {
       nome: new FormControl('', [Validators.required, Validators.minLength(4)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       telefone: new FormControl('', [Validators.required, Validators.minLength(10)]),
-      senha: new FormControl('', [Validators.required])
+      senha: new FormControl('', [Validators.required, Validators.minLength(4)])
     })
   }
 
@@ -29,7 +29,7 @@ export class RegistrarComponent {
       this.authService.verificaRegistrar(this.contatoForm.value)
       this.contatoForm.reset()
     } else {
-      alert("Por favor, preencha todos os campos do formulário!")
+      alert("Por favor, preencha o formulário corretamente!")
     }
   }
 }
