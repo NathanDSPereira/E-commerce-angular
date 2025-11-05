@@ -64,7 +64,8 @@ export class AuthService {
       this.usuarioSessionStorage = {
         nome: this.usuarioCadastradoNoLocalStorage.nome, 
         telefone: this.usuarioCadastradoNoLocalStorage.telefone, 
-        email: this.usuarioCadastradoNoLocalStorage.email, 
+        email: this.usuarioCadastradoNoLocalStorage.email,
+        produtos: this.usuarioCadastradoNoLocalStorage.produtos,
         token: this.tokenExemploValido
       }
       return of (this.usuarioSessionStorage).pipe(
@@ -86,12 +87,12 @@ export class AuthService {
     
     if(this.listaUsuariosArray) {
       this.usuarioValido = this.listaUsuariosArray.find(user => user.email == usuario.email)
-    
       if(this.usuarioValido) {
         console.log("Usuário já cadastrado");
         alert("Usuário já cadastrado com esse e-mail")
         return
       } else {
+        usuario.produtos = [];
         this.salvarNovoUsuario(usuario);
         alert("Usuário cadastrado com sucesso!");
         return
