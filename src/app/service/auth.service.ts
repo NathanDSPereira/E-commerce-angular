@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { delay, Observable, of, tap } from 'rxjs';
 import { Usuario } from '../interface/usuario';
 import { Credenciais } from '../interface/credenciais';
-import { EmailValidator } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -23,33 +22,6 @@ export class AuthService {
   private tokenExemploValido?: string;
 
   constructor() { }
-  
-  // verificaLocalStorage(dadosUsuario: Usuario): Observable<{token: string}> {
-  //   // this.getUsersDB();
-    
-  //   console.log(this.getLocalStorage());
-  //   console.log(this.listaUsuarios);
-    
-  //   this.listaUsuarios.map((usuario) => {console.log(usuario)});
-    
-    
-  //   this.usuarioValido = true
-    
-  //   if(this.usuarioValido) {
-  //     this.tokenExemploValido = 'JWT.SIMULADO.TOKEN-PARA-PORTFOLIO123';
-
-  //     return of({token: this.tokenExemploValido}).pipe(
-  //       delay(800),
-  //       tap((response) => {
-  //         this.setSessionStorage(response.token);
-  //       })
-  //     )
-  //   } else {
-  //     return new Observable( obs => {
-  //       obs.error("Credênciais inválidas. Tente 'usuario@exemplo.com' e 'senha_teste'")
-  //     });
-  //   }
-  // }
 
   //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
 
