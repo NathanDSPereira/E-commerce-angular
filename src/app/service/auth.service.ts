@@ -92,8 +92,11 @@ export class AuthService {
     }
   }
 
-
-
+  salvarUsuarioComProdutosAtualizados(usuarioNovo: Credenciais | undefined): void {
+    if(usuarioNovo != undefined) {
+      this.setSessionStorage(usuarioNovo)
+    }
+  }
 
   private setSessionStorage(user_inf: Credenciais):void {
     sessionStorage.setItem(this.chave_user, JSON.stringify(user_inf));

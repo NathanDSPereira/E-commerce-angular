@@ -13,29 +13,56 @@ import { AuthService } from '../../service/auth.service';
   styleUrl: './produto-card.component.css'
 })
 
-export class ProdutoIndividualComponent{
+export class ProdutoIndividualComponent {
   @Input() produto!: Produto;
+
   usuarioDadosString?: string | null;
   usuarioDadosObject?: Credenciais;
+
+  produtoInserido?: boolean;
 
   constructor(private authService: AuthService) {}
 
   comprar(): void {
-    console.log(this.produto)
-    if(this.pegarDadosUsuario()) {
-      console.log(this.usuarioDadosObject);
-      this.usuarioDadosObject?.produtos?.push(this.produto)
-      //enviar os dados do sectionstorage para lá de volta só que atualizado
+    if(this.authService.estaLogado()) {
+      if(!this.verificarProdutoIncluso(this.produto)) {
+        this.salvarProdutoComprar(this.produto);
+        console.log(this.usuarioDadosObject);
+      } else {
+        alert("Produto já incluso");
+        return
+      };
+    } else {
+      alert("Por favor, esteja logado para conseguir comprar!")
     }
   }
 
-  pegarDadosUsuario(): Credenciais | false {
-    this.usuarioDadosString = this.authService.getSessionStorage
-    ()
-    if(this.usuarioDadosString == null) {
-      return false
+  verificarProdutoIncluso(produto: Produto): boolean {
+    if(this.pegarDadosUsuario()) {
+      this.produtoInserido = this.usuarioDadosObject?.produtos?.some((produtoAntigo => {produtoAntigo.id == produto.id}))
+      console.log(this.produtoInserido);
+      
+      if(this.produtoInserido) {
+        return true
+      } else {
+        return false;
+      }
     } else {
-      return this.usuarioDadosObject = JSON.parse(this.usuarioDadosString);
+      return false;
     }
+  }
+
+  pegarDadosUsuario(): Credenciais | boolean {
+    this.usuarioDadosString = this.authService.getSessionStorage();
+    if(this.usuarioDadosString != null) {
+      return this.usuarioDadosObject = JSON.parse(this.usuarioDadosString)
+    } else {
+      return false
+    }
+  }
+
+  salvarProdutoComprar(produtoNovo: Produto): void {
+    this.usuarioDadosObject?.produtos?.push(produtoNovo);
+    this.authService.salvarUsuarioComProdutosAtualizados(this.usuarioDadosObject)
   }
 }
