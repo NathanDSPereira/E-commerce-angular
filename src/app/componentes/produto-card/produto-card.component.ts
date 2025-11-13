@@ -24,32 +24,33 @@ export class ProdutoIndividualComponent {
   constructor(private authService: AuthService) {}
 
   comprar(): void {
-    if(this.authService.estaLogado()) {
-      if(!this.verificarProdutoIncluso(this.produto)) {
-        this.salvarProdutoComprar(this.produto);
-        console.log(this.usuarioDadosObject);
-      } else {
-        alert("Produto já incluso");
-        return
-      };
-    } else {
-      alert("Por favor, esteja logado para conseguir comprar!")
+    if(!this.authService.estaLogado()) {
+      alert("Por favor, esteja logado para comprar");
+      return
     }
+
+    if(this.verificarProdutoIncluso(this.produto)) {
+      alert("Produto já incluso no carrinho!")
+      return;
+    }
+    
+    this.salvarProdutoComprar(this.produto);
   }
 
   verificarProdutoIncluso(produto: Produto): boolean {
-    if(this.pegarDadosUsuario()) {
-      this.produtoInserido = this.usuarioDadosObject?.produtos?.some((produtoAntigo => {produtoAntigo.id == produto.id}))
-      console.log(this.produtoInserido);
+    if(!this.pegarDadosUsuario()) return false      
       
-      if(this.produtoInserido) {
-        return true
-      } else {
-        return false;
-      }
-    } else {
-      return false;
+    this.produtoInserido = this.usuarioDadosObject?.produtos?.some((produtoIncluso) => {
+      return Number(produtoIncluso.adicionadoNoCarrinho) === Number(produto.adicionadoNoCarrinho)
+    })
+
+    if(this.produtoInserido) {
+      console.log('produto já incluso no carrinho')
+      return true
     }
+
+    this.produto.adicionadoNoCarrinho = true;
+    return false;
   }
 
   pegarDadosUsuario(): Credenciais | boolean {

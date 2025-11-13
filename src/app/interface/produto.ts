@@ -4,7 +4,7 @@ export interface Produto {
     descricao: string,
     imagemUrl: string,
     preco: number,
-    adicionarNoCarrinho: boolean,
+    adicionadoNoCarrinho: boolean,
     hover: boolean,
     categoria: string
 }
