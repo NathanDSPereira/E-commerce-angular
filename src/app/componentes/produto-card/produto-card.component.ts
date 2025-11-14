@@ -16,8 +16,7 @@ import { AuthService } from '../../service/auth.service';
 export class ProdutoIndividualComponent {
   @Input() produto!: Produto;
 
-  usuarioDadosString?: string | null;
-  usuarioDadosObject?: Credenciais;
+  usuarioSessionObject?: Credenciais;
 
   produtoInserido?: boolean;
 
@@ -34,13 +33,15 @@ export class ProdutoIndividualComponent {
       return;
     }
     
-    this.salvarProdutoComprar(this.produto);
+    this.salvarProduto(this.produto);
   }
 
   verificarProdutoIncluso(produto: Produto): boolean {
-    if(!this.pegarDadosUsuario()) return false      
+    if(!this.authService.pegarDadosUsuarioSessionStorage()) return false
+
+    this.usuarioSessionObject = this.authService.pegarDadosUsuarioSessionStorage();
       
-    this.produtoInserido = this.usuarioDadosObject?.produtos?.some((produtoIncluso) => {
+    this.produtoInserido = this.usuarioSessionObject?.produtos?.some((produtoIncluso) => {
       return Number(produtoIncluso.adicionadoNoCarrinho) === Number(produto.adicionadoNoCarrinho)
     })
 
@@ -53,17 +54,8 @@ export class ProdutoIndividualComponent {
     return false;
   }
 
-  pegarDadosUsuario(): Credenciais | boolean {
-    this.usuarioDadosString = this.authService.getSessionStorage();
-    if(this.usuarioDadosString != null) {
-      return this.usuarioDadosObject = JSON.parse(this.usuarioDadosString)
-    } else {
-      return false
-    }
-  }
-
-  salvarProdutoComprar(produtoNovo: Produto): void {
-    this.usuarioDadosObject?.produtos?.push(produtoNovo);
-    this.authService.salvarUsuarioComProdutosAtualizados(this.usuarioDadosObject)
+  salvarProduto(produtoNovo: Produto): void {
+    this.usuarioSessionObject?.produtos?.push(produtoNovo);
+    this.authService.atualizarUsuarioSessionStorage(this.usuarioSessionObject)
   }
 }

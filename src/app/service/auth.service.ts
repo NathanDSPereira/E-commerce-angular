@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { delay, Observable, of, tap } from 'rxjs';
+import { delay, Observable, of, tap, windowCount } from 'rxjs';
 import { Usuario } from '../interface/usuario';
 import { Credenciais } from '../interface/credenciais';
 
@@ -12,21 +12,26 @@ export class AuthService {
   private readonly chave_user = 'auth_user'
 
   private listaUsuariosArray: Usuario[] = [];
-  private listaUsuariosString: string = '';
   dadosJSON?: string | null;
 
-  usuarioValido?: Usuario;
+  usuarioJaCadastrado?: Usuario;
   usuarioCadastradoNoLocalStorage?: Usuario;
   usuarioSessionStorage?: Credenciais;
+  usuarioDadosString?: string | null;
+
+  usuarioEncontrado?: number;
 
   private tokenExemploValido?: string;
 
-  constructor() { }
+  constructor() { 
+    window.addEventListener("beforeunload", () => {
+      this.atualizarProdutosNoLocalStorage();
+    })
 
-  //a função verificaLocalStorage deve apenas verificar se aquele usuário já existe no localStorage
+  }
 
   verificaLogin(credenciais: Usuario): Observable<Credenciais> {
-    this.listaUsuariosArray = this.obterTodosOsUsuarios();
+    this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
 
     this.usuarioCadastradoNoLocalStorage = this.listaUsuariosArray.find((user) => user.email == credenciais.email && user.senha == credenciais.senha);
 
@@ -48,54 +53,75 @@ export class AuthService {
       )
     } else {
       return new Observable( obs => {
-        obs.error("Credenciais erradas!")
+        obs.error("Credenciais erradas ou usuario não encontrado!")
       })
     }
 
   }
 
   verificaRegistrar(usuario: Usuario): void {
-    this.listaUsuariosArray = this.obterTodosOsUsuarios();
+    this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
     
     if(this.listaUsuariosArray) {
-      this.usuarioValido = this.listaUsuariosArray.find(user => user.email == usuario.email)
-      if(this.usuarioValido) {
+      this.usuarioJaCadastrado = this.listaUsuariosArray.find(user => user.email == usuario.email)
+      if(this.usuarioJaCadastrado) {
         console.log("Usuário já cadastrado");
         alert("Usuário já cadastrado com esse e-mail")
         return
       } else {
         usuario.produtos = [];
-        this.salvarNovoUsuario(usuario);
+        this.salvarNovoUsuarioLocalStorage(usuario);
         alert("Usuário cadastrado com sucesso!");
         return
       }
     }
   }
   
+  atualizarProdutosNoLocalStorage(): void {
+    this.usuarioSessionStorage = this.pegarDadosUsuarioSessionStorage();
+    this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
 
-  private salvarNovoUsuario(novoUsuario: Usuario): void {
-    this.listaUsuariosArray = this.obterTodosOsUsuarios();
+    this.usuarioEncontrado = this.listaUsuariosArray.findIndex(user =>
+      user.email == this.usuarioSessionStorage?.email
+    );
 
-    this.listaUsuariosArray.push(novoUsuario)
-    this.listaUsuariosString = JSON.stringify(this.listaUsuariosArray);
+    if(this.usuarioEncontrado !== -1) {
+      this.listaUsuariosArray[this.usuarioEncontrado].produtos = this.usuarioSessionStorage?.produtos ?? [];
+    }
 
-    this.setLocalStorage(this.listaUsuariosString);
+    this.setLocalStorage(this.listaUsuariosArray)
   }
 
-  obterTodosOsUsuarios(): Usuario[] {
+  atualizarUsuarioSessionStorage(usuarioNovo: Credenciais | undefined): void {
+    if(usuarioNovo != undefined) {
+      this.setSessionStorage(usuarioNovo)
+    }
+  }
+
+  private salvarNovoUsuarioLocalStorage(novoUsuario: Usuario): void {
+    this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
+
+    this.listaUsuariosArray.push(novoUsuario)
+
+    this.setLocalStorage(this.listaUsuariosArray);
+  }
+
+  obterTodosOsUsuariosLocalStorage(): Usuario[] {
     this.dadosJSON = this.getLocalStorage();
 
     if(this.dadosJSON == null) {
       return [];
     } else {
-      return JSON.parse(JSON.parse(this.dadosJSON)) as Usuario[]
+      return JSON.parse(this.dadosJSON) as Usuario[]
     }
   }
 
-  salvarUsuarioComProdutosAtualizados(usuarioNovo: Credenciais | undefined): void {
-    if(usuarioNovo != undefined) {
-      this.setSessionStorage(usuarioNovo)
-    }
+  pegarDadosUsuarioSessionStorage(): Credenciais | undefined {
+    this.usuarioDadosString = this.getSessionStorage();
+
+    if(!this.usuarioDadosString) return undefined
+
+    return JSON.parse(this.usuarioDadosString)
   }
 
   private setSessionStorage(user_inf: Credenciais):void {
@@ -111,6 +137,7 @@ export class AuthService {
   }
 
   deslogar(): void {
+    this.atualizarProdutosNoLocalStorage();
     sessionStorage.removeItem(this.chave_user);
   }
 
@@ -118,7 +145,7 @@ export class AuthService {
     return localStorage.getItem(this.db_users);
   }
 
-  private setLocalStorage(users: String): void {
+  private setLocalStorage(users: Usuario[]): void {
     localStorage.setItem(this.db_users, JSON.stringify(users));
   }
 }
