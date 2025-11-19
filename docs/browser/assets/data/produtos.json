@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "titulo": "Teclado Mecânico RGB",
+    "descricao": "Teclado gamer com switches mecânicos e iluminação RGB.",
+    "categoria": "Perifericos",
+    "preco": 349.90,
+    "imagemUrl": "assets/images/teclado.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 2,
+    "titulo": "Mouse Gamer 7200 DPI",
+    "descricao": "Mouse ergonômico com ajuste de DPI e luzes LED.",
+    "categoria": "Perifericos",
+    "preco": 129.90,
+    "imagemUrl": "assets/images/mouse.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 3,
+    "titulo": "Monitor 24'' Full HD",
+    "descricao": "Monitor LED com taxa de atualização de 180Hz.",
+    "categoria": "Monitores",
+    "preco": 899.00,
+    "imagemUrl": "assets/images/monitor.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 4,
+    "titulo": "Headset Surround 7.1",
+    "descricao": "Fone com microfone e som imersivo para jogos.",
+    "categoria": "Audio",
+    "preco": 249.90,
+    "imagemUrl": "assets/images/headset.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 5,
+    "titulo": "Controle Xbox Series",
+    "descricao": "Controle sem fio compatível com PC e Xbox.",
+    "categoria": "Controles",
+    "preco": 499.00,
+    "imagemUrl": "assets/images/controle-xbox.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 6,
+    "titulo": "Controle DualSense PS5",
+    "descricao": "Controle oficial do PlayStation 5 com feedback háptico.",
+    "categoria": "Controles",
+    "preco": 529.00,
+    "imagemUrl": "assets/images/controle-ps5.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 7,
+    "titulo": "Webcam Full HD",
+    "descricao": "Ideal para videoconferências com alta qualidade de imagem.",
+    "categoria": "Webcams",
+    "preco": 199.90,
+    "imagemUrl": "assets/images/webcam.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 8,
+    "titulo": "Notebook Gamer Ryzen 7",
+    "descricao": "Notebook com placa de vídeo dedicada e SSD 512GB.",
+    "categoria": "Notebooks",
+    "preco": 5199.00,
+    "imagemUrl": "assets/images/notebook.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 9,
+    "titulo": "Cadeira Gamer Reclinável",
+    "descricao": "Conforto máximo para longas sessões de jogo ou estudo.",
+    "categoria": "Moveis",
+    "preco": 1099.90,
+    "imagemUrl": "assets/images/cadeira-gamer.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 10,
+    "titulo": "Microfone Condensador USB",
+    "descricao": "Ideal para streaming, podcasts e gravações.",
+    "categoria": "Audio",
+    "preco": 319.90,
+    "imagemUrl": "assets/images/microfone.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 11,
+    "titulo": "HD Externo 5TB",
+    "descricao": "Armazenamento portátil com USB 3.0.",
+    "categoria": "Armazenamento",
+    "preco": 449.00,
+    "imagemUrl": "assets/images/hd-externo.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 12,
+    "titulo": "SSD NVMe 1TB",
+    "descricao": "Alta velocidade de leitura e gravação para seu sistema.",
+    "categoria": "Armazenamento",
+    "preco": 599.90,
+    "imagemUrl": "assets/images/ssd.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 13,
+    "titulo": "Placa de Vídeo RTX 3060",
+    "descricao": "Desempenho excelente para jogos e edição de vídeo.",
+    "categoria": "Componentes",
+    "preco": 2399.00,
+    "imagemUrl": "assets/images/placa-video.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 14,
+    "titulo": "Roteador Wi-Fi 6",
+    "descricao": "Internet rápida e estável para todos os dispositivos.",
+    "categoria": "Redes",
+    "preco": 349.00,
+    "imagemUrl": "assets/images/roteador.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 15,
+    "titulo": "Carregador Rápido USB-C",
+    "descricao": "Compatível com smartphones e tablets modernos.",
+    "categoria": "Acessorios",
+    "preco": 89.90,
+    "imagemUrl": "assets/images/carregador.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 16,
+    "titulo": "Hub USB 3.0 4 portas",
+    "descricao": "Expanda suas conexões com alta velocidade.",
+    "categoria": "Acessorios",
+    "preco": 59.90,
+    "imagemUrl": "assets/images/hub-usb.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 17,
+    "titulo": "Câmera de Ação 4K",
+    "descricao": "Capture seus momentos com qualidade incrível.",
+    "categoria": "Cameras",
+    "preco": 599.00,
+    "imagemUrl": "assets/images/camera-acao.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 18,
+    "titulo": "Echo Dot 5ª Geração",
+    "descricao": "Assistente inteligente com Alexa integrada.",
+    "categoria": "Casa Inteligente",
+    "preco": 349.90,
+    "imagemUrl": "assets/images/echo-dot.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 19,
+    "titulo": "Smartwatch Fitness",
+    "descricao": "Monitore sua saúde com estilo e praticidade.",
+    "categoria": "Wearables",
+    "preco": 279.00,
+    "imagemUrl": "assets/images/smartwatch.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  },
+  {
+    "id": 20,
+    "titulo": "Estabilizador de Energia",
+    "descricao": "Proteja seus equipamentos de picos de tensão.",
+    "categoria": "Componentes",
+    "preco": 219.90,
+    "imagemUrl": "assets/images/estabilizador.jpg",
+    "adicionadoNoCarrinho": false,
+    "hover": false
+  }
+]

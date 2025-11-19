@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/E-commerce-angular": {},
+    "/E-commerce-angular/home": {},
+    "/E-commerce-angular/login": {},
+    "/E-commerce-angular/perfil": {},
+    "/E-commerce-angular/produtos": {},
+    "/E-commerce-angular/registrar": {}
+  }
+}
