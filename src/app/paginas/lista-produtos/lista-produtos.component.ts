@@ -11,7 +11,7 @@ import { ProdutoIndividualComponent } from '../../componentes/produto-card/produ
 
 @Component({
   selector: 'app-lista-produtos',
-  imports: [CommonModule,  FormsModule, ProdutoIndividualComponent],
+  imports: [CommonModule, FormsModule, ProdutoIndividualComponent],
   templateUrl: './lista-produtos.component.html',
   styleUrl: './lista-produtos.component.css'
 })
@@ -30,12 +30,12 @@ export class ListaProdutosComponent {
   categoriaUrl: string = '';
 
   constructor(
-    private produtoService: ProdutoService, 
-    private categoriaService: CategoriaService, 
+    private produtoService: ProdutoService,
+    private categoriaService: CategoriaService,
     private route: ActivatedRoute
-  ) {}
-  
-   ngOnInit(): void {
+  ) { }
+
+  ngOnInit(): void {
     this.produtoService.getProducts().subscribe((data) => {
       this.todosOsProdutos = data;
 
@@ -44,10 +44,10 @@ export class ListaProdutosComponent {
       this.route.queryParams.subscribe((params) => {
         this.categoriaUrl = params['categoria'];
 
-        if(this.categoriaUrl) {
+        if (this.categoriaUrl) {
           this.categoriasSelecionadas = [];
 
-          this.categoriasSelecionadas.push(this.categoriaUrl);          
+          this.categoriasSelecionadas.push(this.categoriaUrl);
 
           this.filtrarProduto();
         }
@@ -57,28 +57,28 @@ export class ListaProdutosComponent {
     this.categoriaService.getCategorias().subscribe((data) => {
       this.todasAsCategorias = data;
     })
-    
+
   }
-  
+
   selecionarProdutosCategoria(ev: any): void {
     this.opcaoMarcada = ev.target.checked;
-  
+
     this.categoriaUnitariaSelecionada = ev.target.defaultValue;
-    
-    
-    if(this.opcaoMarcada) {
-      if(!this.categoriasSelecionadas.includes(this.categoriaUnitariaSelecionada)) {
+
+
+    if (this.opcaoMarcada) {
+      if (!this.categoriasSelecionadas.includes(this.categoriaUnitariaSelecionada)) {
         this.categoriasSelecionadas.push(this.categoriaUnitariaSelecionada);
       }
     } else {
       this.categoriasSelecionadas = this.categoriasSelecionadas.filter((categoria) => categoria !== this.categoriaUnitariaSelecionada)
     }
-    
+
     this.filtrarProduto();
   }
-  
+
   filtrarProduto(): void {
-    if(this.categoriasSelecionadas.length === 0) {
+    if (this.categoriasSelecionadas.length === 0) {
       this.listaProdutos = this.todosOsProdutos;
       return
     }
@@ -89,6 +89,8 @@ export class ListaProdutosComponent {
   }
 
   escrollarParaTopo(): void {
-    window.scrollTo({top: 0, behavior: 'smooth'})
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
   }
 }

@@ -23,11 +23,12 @@ export class AuthService {
 
   private tokenExemploValido?: string;
 
-  constructor() { 
-    window.addEventListener("beforeunload", () => {
-      this.atualizarProdutosNoLocalStorage();
-    })
-
+  constructor() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener("beforeunload", () => {
+        this.atualizarProdutosNoLocalStorage();
+      })
+    }
   }
 
   verificaLogin(credenciais: Usuario): Observable<Credenciais> {
@@ -35,24 +36,24 @@ export class AuthService {
 
     this.usuarioCadastradoNoLocalStorage = this.listaUsuariosArray.find((user) => user.email == credenciais.email && user.senha == credenciais.senha);
 
-    if(this.usuarioCadastradoNoLocalStorage) {
+    if (this.usuarioCadastradoNoLocalStorage) {
       this.tokenExemploValido = 'JWT.SIMULADO.TOKEN-PARA-PORTFOLIO123'
-      
+
       this.usuarioSessionStorage = {
-        nome: this.usuarioCadastradoNoLocalStorage.nome, 
-        telefone: this.usuarioCadastradoNoLocalStorage.telefone, 
+        nome: this.usuarioCadastradoNoLocalStorage.nome,
+        telefone: this.usuarioCadastradoNoLocalStorage.telefone,
         email: this.usuarioCadastradoNoLocalStorage.email,
         produtos: this.usuarioCadastradoNoLocalStorage.produtos,
         token: this.tokenExemploValido
       }
-      return of (this.usuarioSessionStorage).pipe(
+      return of(this.usuarioSessionStorage).pipe(
         delay(800),
         tap((response) => {
           this.setSessionStorage(response)
         })
       )
     } else {
-      return new Observable( obs => {
+      return new Observable(obs => {
         obs.error("Credenciais erradas ou usuario não encontrado!")
       })
     }
@@ -61,10 +62,10 @@ export class AuthService {
 
   verificaRegistrar(usuario: Usuario): void {
     this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
-    
-    if(this.listaUsuariosArray) {
+
+    if (this.listaUsuariosArray) {
       this.usuarioJaCadastrado = this.listaUsuariosArray.find(user => user.email == usuario.email)
-      if(this.usuarioJaCadastrado) {
+      if (this.usuarioJaCadastrado) {
         console.log("Usuário já cadastrado");
         alert("Usuário já cadastrado com esse e-mail")
         return
@@ -76,7 +77,7 @@ export class AuthService {
       }
     }
   }
-  
+
   atualizarProdutosNoLocalStorage(): void {
     this.usuarioSessionStorage = this.pegarDadosUsuarioSessionStorage();
     this.listaUsuariosArray = this.obterTodosOsUsuariosLocalStorage();
@@ -85,7 +86,7 @@ export class AuthService {
       user.email == this.usuarioSessionStorage?.email
     );
 
-    if(this.usuarioEncontrado !== -1) {
+    if (this.usuarioEncontrado !== -1) {
       this.listaUsuariosArray[this.usuarioEncontrado].produtos = this.usuarioSessionStorage?.produtos ?? [];
     }
 
@@ -93,7 +94,7 @@ export class AuthService {
   }
 
   atualizarUsuarioSessionStorage(usuarioNovo: Credenciais | undefined): void {
-    if(usuarioNovo != undefined) {
+    if (usuarioNovo != undefined) {
       this.setSessionStorage(usuarioNovo)
     }
   }
@@ -109,7 +110,7 @@ export class AuthService {
   obterTodosOsUsuariosLocalStorage(): Usuario[] {
     this.dadosJSON = this.getLocalStorage();
 
-    if(this.dadosJSON == null) {
+    if (this.dadosJSON == null) {
       return [];
     } else {
       return JSON.parse(this.dadosJSON) as Usuario[]
@@ -119,19 +120,19 @@ export class AuthService {
   pegarDadosUsuarioSessionStorage(): Credenciais | undefined {
     this.usuarioDadosString = this.getSessionStorage();
 
-    if(!this.usuarioDadosString) return undefined
+    if (!this.usuarioDadosString) return undefined
 
     return JSON.parse(this.usuarioDadosString)
   }
 
-  private setSessionStorage(user_inf: Credenciais):void {
+  private setSessionStorage(user_inf: Credenciais): void {
     sessionStorage.setItem(this.chave_user, JSON.stringify(user_inf));
   }
 
   getSessionStorage(): string | null {
     return sessionStorage.getItem(this.chave_user);
   }
-  
+
   estaLogado(): boolean {
     return !!this.getSessionStorage();
   }
