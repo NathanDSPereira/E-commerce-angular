@@ -1,83 +1,73 @@
-<header class="sticky top-0 z-50 backdrop-blur-md shadow-sm border-b border-slate-100 text-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-            <nav class="hidden md:flex space-x-8">
-                <a [routerLink]="['/home']"
-                    class="text-slate-600 hover:text-[var(--color-primary)] font-medium transition-colors">Home</a>
-                <a [routerLink]="['/produtos']"
-                    class="text-slate-600 hover:text-[var(--color-primary)] font-medium transition-colors">Produtos</a>
-                <a href="#"
-                    class="text-slate-600 hover:text-[var(--color-primary)] font-medium transition-colors">Blog</a>
-                <a href="#"
-                    class="text-slate-600 hover:text-[var(--color-primary)] font-medium transition-colors">Contato</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <div
-                    class="hidden lg:flex h-12 items-center bg-slate-200 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-[var(--color-primary)] transition-all w-64">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="text-slate-400">
-                        <circle cx="11" cy="11" r="8" />
-                        <path d="m21 21-4.3-4.3" />
-                    </svg>
-                    <input type="text" placeholder="Buscar produtos..."
-                        class="border-none focus:outline-none text-sm ml-2 w-full text-slate-700 placeholder-slate-400"
-                    >
-                </div>
-
-                <div class="flex items-center gap-3 text-slate-600">
-                    <button class="p-2 hover:bg-slate-300 hover:cursor-pointer rounded-full transition-colors relative group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                        </svg>
-                        <span class="absolute top-0 right-0 h-2 w-2 bg-[var(--color-secondary)] rounded-full"></span>
-                    </button>
-
-                    <button class="p-2 hover:bg-slate-300 hover:cursor-pointer rounded-full transition-colors relative group">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1" />
-                            <circle cx="19" cy="21" r="1" />
-                            <path
-                                d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                        </svg>
-                        <span
-                            class="absolute -top-1 -right-1 bg-[var(--color-primary)] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
-                            3
-                        </span>
-                    </button>
-
-                    @if (!verificarSeEstaLogado()) {
-                    <a [routerLink]="['login']"
-                        class="flex items-center gap-2 ml-2 text-lg font-medium hover:text-[var(--color-primary)] transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-                            <polyline points="10 17 15 12 10 7" />
-                            <line x1="15" x2="3" y1="12" y2="12" />
-                        </svg>
-                        Entrar
-                    </a>
-                    } @else {
-                    <a [routerLink]="['perfil']" [queryParams]="{'dados': dadosUsuarioLogado}"
-                        class="flex items-center gap-2 ml-2 hover:text-[var(--color-primary)] transition-colors">
-                        <div
-                            class="h-8 w-8 bg-[var(--color-primary)]/10 rounded-full flex items-center justify-center text-[var(--color-primary)]">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                                <circle cx="12" cy="7" r="4" />
-                            </svg>
-                        </div>
-                        <span class="text-sm font-medium hidden sm:block">{{this.dadosUsuarioLogadoArray?.nome}}</span>
-                    </a>
-                    }
-                </div>
-            </div>
+<header>
+    <section class="flex justify-around items-center bg-blue-900 h-28 font-sans shadow-xl mr-6 ml-6 mt-6 rounded-tr-2xl rounded-tl-2xl">
+        <div>
+            <img alt="" src="assets/images/logotipo.png" class="h-72">
         </div>
-    </div>
+        <div class="flex flex-5/12">
+            <input type="text" placeholder="Pesquise qualquer produto" class="w-96 h-14 rounded-l-2xl bg-white text-start p-6">
+            <button class="w-32 h-14 bg-[#F4A261] rounded-r-2xl flex justify-center items-center hover:cursor-pointer hover:bg-[#ff9138]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>    
+            </button>
+        </div>
+        <div class="text-white flex flex-2/12">
+            <nav>
+                <ul class="flex gap-7">
+                    <li class="flex gap-1 hover:cursor-pointer hover:underline hover:font-bold">
+                        @if (!verificarSeEstaLogado()) {
+                            <a [routerLink]="['login']" class="flex gap-2 text-lg items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-in-icon lucide-log-in"><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>
+                                Sign in
+                            </a>
+                        } @else {
+                            <a [routerLink]="['perfil']" [queryParams]="{'dados': dadosUsuarioLogado}" class="flex gap-2 text-lg items-center">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                {{this.dadosUsuarioLogadoArray?.nome}}
+                            </a>
+                        }
+                    </li>
+                    <li class="flex hover:cursor-pointer hover:underline hover:font-bold">
+                        <a href="#" class="flex gap-2 text-lg items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                            </svg>
+                            Favorito
+                        </a>
+                    </li>
+                    <li class="flex gap-1 hover:cursor-pointer hover:underline hover:font-bold">
+                        <a href="#" class="flex gap-2 text-lg items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                            Carrinho
+                        </a>                    
+                    </li>
+                </ul>
+            </nav>
+        </div>  
+    </section>
+    
+    <section class="bg-[#7175f9] h-20 text-lg text-[#3A3A3A] mr-6 ml-6 rounded-bl-2xl rounded-br-2xl">
+        <nav class="flex justify-center items-center h-20 gap-36">
+
+            <ul class="flex gap-10 items-center justify-center flex-4/12">
+                <li>
+                    <a [routerLink]="['/home']" class="hover:cursor-pointer hover:underline hover:font-bold hover:text-[#ffffff]">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="hover:cursor-pointer hover:underline hover:font-bold hover:text-[#ffffff]">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/produtos']" class="hover:cursor-pointer hover:underline hover:font-bold hover:text-[#ffffff]">
+                        Lista de produtos
+                    </a>
+                </li>
+            </ul>
+
+            <div class="flex flex-1/12">
+                <p class="font-bold">30 dias de retorno grátis</p>
+            </div>
+        </nav>
+    </section>
 </header>

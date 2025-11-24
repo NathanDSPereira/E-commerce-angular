@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class LayoutComponent {
   escrollarParaTopo(): void {
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+    window.scrollTo({top: 0, behavior: 'smooth'})
   }
 }
