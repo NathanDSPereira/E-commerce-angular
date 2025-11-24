@@ -57,5 +57,7 @@ export class ProdutoIndividualComponent {
   salvarProduto(produtoNovo: Produto): void {
     this.usuarioSessionObject?.produtos?.push(produtoNovo);
     this.authService.atualizarUsuarioSessionStorage(this.usuarioSessionObject)
+    alert("Produto adicionado ao carrinho!")
+    window.location.reload();
   }
 }
