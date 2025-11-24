@@ -1,9 +1,7 @@
 <main class="pb-20">
-    <!-- Hero Section -->
     <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Text Content -->
                 <div class="text-center lg:text-left animate-fade-in-up">
                     <h1 class="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 mb-6">
                         Tecnologia que <span class="text-[var(--color-primary)]">transforma</span> o seu dia.
@@ -14,26 +12,25 @@
                     </p>
                 </div>
 
-                <!-- Hero Images Grid -->
                 <div class="relative">
                     <div class="grid grid-cols-2 gap-4">
                         <div class="space-y-4 translate-y-8">
                             <div
                                 class="bg-white p-4 rounded-3xl shadow-xl transform transition-transform hover:scale-105 duration-500">
                                 <img src="assets/images/produtos-mostruario4.png"
-                                    class="w-full h-64 object-contain rounded-2xl" alt="Notebook">
+                                    class="w-full h-64 object-contain rounded-2xl" alt="Console portátil">
                             </div>
                             <div
                                 class="bg-slate-900 p-4 rounded-3xl shadow-xl transform transition-transform hover:scale-105 duration-500">
                                 <img src="assets/images/produtos-mostruario.png"
-                                    class="w-full h-48 object-cover rounded-2xl opacity-90" alt="Console">
+                                    class="w-full h-48 object-cover rounded-2xl opacity-90" alt="PS5">
                             </div>
                         </div>
                         <div class="space-y-4 -translate-y-8">
                             <div
                                 class="bg-orange-100 p-4 rounded-3xl shadow-xl transform transition-transform hover:scale-105 duration-500">
                                 <img src="assets/images/produtos-mostruario2.png"
-                                    class="w-full h-48 object-contain rounded-2xl mix-blend-multiply" alt="PS5">
+                                    class="w-full h-48 object-contain rounded-2xl mix-blend-multiply" alt="Notebook">
                             </div>
                             <div class="bg-white p-6 rounded-3xl shadow-xl flex items-center justify-center h-64">
                                 <div class="text-center">
@@ -46,39 +43,27 @@
                 </div>
             </div>
         </div>
-
-        <!-- Background Decoration -->
-        <div
-            class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-[var(--color-primary)]/5 rounded-full blur-3xl -z-10">
-        </div>
-        <div
-            class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[600px] h-[600px] bg-[var(--color-secondary)]/5 rounded-full blur-3xl -z-10">
-        </div>
     </section>
 
-    <!-- Best Sellers -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-end mb-12">
+            <div class="flex justify-between mb-12 items-center">
                 <div>
                     <h2 class="text-3xl font-bold text-slate-900 mb-2">Mais Vendidos</h2>
                     <p class="text-slate-500">Os produtos favoritos da nossa comunidade</p>
                 </div>
-                <a href="#" class="text-[var(--color-primary)] font-medium hover:underline hidden sm:block">Ver todos
-                    &rarr;</a>
+                <a [routerLink]="['/produtos']" class="flex items-center gap-2 hover:text-[var(--color-primary)]">
+                    Ver todos
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-right-icon lucide-chevrons-right"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>
+                </a>
             </div>
 
             <lista-produtos-app></lista-produtos-app>
-
-            <div class="mt-8 text-center sm:hidden">
-                <a href="#" class="text-[var(--color-primary)] font-medium hover:underline">Ver todos &rarr;</a>
-            </div>
         </div>
     </section>
 
-    <!-- Categories -->
     <section class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900 mb-4">Navegue por Categorias</h2>
                 <p class="text-slate-500 max-w-2xl mx-auto">Encontre exatamente o que você procura em nossas categorias
@@ -89,10 +74,9 @@
         </div>
     </section>
 
-    <!-- Feedbacks -->
     <section class="py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-slate-900 mb-16">O que dizem nossos clientes</h2>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+            <h2 class="text-3xl font-bold text-center text-slate-900">O que dizem nossos clientes</h2>
             <app-feedbacks></app-feedbacks>
         </div>
     </section>
