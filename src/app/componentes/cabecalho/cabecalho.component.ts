@@ -17,23 +17,24 @@ export class CabecalhoComponent implements OnInit {
 
   dadosUsuarioLogado?: string | null;
   dadosUsuarioLogadoArray?: Credenciais;
-  constructor(private navegar: Router, private authService: AuthService) {}
+  produtosNoCarrinho!: number | undefined;
+  constructor(private navegar: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-     if(this.authService.estaLogado()) {
+    if (this.authService.estaLogado()) {
       this.dadosUsuarioLogado = this.authService.getSessionStorage();
-      if(this.dadosUsuarioLogado) {
+      if (this.dadosUsuarioLogado) {
         this.dadosUsuarioLogadoArray = JSON.parse(this.dadosUsuarioLogado);
       }
-     }
-     console.log(this.dadosUsuarioLogadoArray, typeof this.dadosUsuarioLogadoArray)
+    }
+    this.produtosNoCarrinho = this.dadosUsuarioLogadoArray?.produtos?.length;
+    console.log(this.produtosNoCarrinho)
   }
 
   verificarSeEstaLogado(): boolean {
-    if(this.authService.estaLogado()) {
-      return true;
-    } else {
-      return false;
-    }
+
+    if(this.authService.estaLogado()) return true
+
+    return false;
   }
 }
