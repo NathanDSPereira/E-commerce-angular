@@ -1,31 +1,5 @@
-<section class="mt-36 mb-24">
-    <div class="flex justify-center items-center text-lg flex-wrap">
-        <ul class="flex items-center justify-between h-36 w-4/5 bg-[#65bae9] pl-12 pr-12 rounded-2xl">
-            <li class="flex gap-6 items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d36001f9] lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
-                <div>
-                    <p><strong>Entrega grátis</strong></p>
-                    <p>em pedidos acima de <strong>$50,00</strong></p>
-                </div>
-            </li>
-            <li class="flex gap-6 items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d36001f9] lucide lucide-crown-icon lucide-crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
-                <div>
-                    <p><strong>Melhor qualidade</strong></p>
-                    <p>no menor preço</p>
-                </div>
-            </li>
-            <li class="flex gap-6 items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#d36001f9] lucide lucide-shield-check-icon lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
-                <div>
-                    <p><strong>1 ano de garantia</strong></p>
-                    <p>garantia disponível</p>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <div class="flex items-center text-lg mt-28 mb-24 flex-col gap-10">
+<section class="mt-36 flex flex-col justify-center">
+    <div class="flex items-center text-lg  mb-24 flex-col gap-10">
         <ul class="flex justify-center flex-wrap gap-4">
             <li class="flex flex-col border border-black rounded-2xl h-60 w-md justify-around">
                 <div class="flex items-center gap-7 p-3">
@@ -56,11 +30,43 @@
             </li>
         </ul>
 
-        <button class="learn-more">
-            <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-            </span>
-            <span class="button-text">Leia mais</span>
+        <button class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50px"
+                height="50px"
+                viewBox="0 0 24 24"
+                class="stroke-[var(--color-primary-dark)] fill-none group-hover:stroke-[var(--color-secondary-dark)] group-hover:duration-0 duration-300"
+            >
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke-width="1"></path>
+                <path d="M8 12H16" stroke-width="1"></path>
+                <path d="M12 16V8" stroke-width="1"></path>
+            </svg>
         </button>
+    </div>
+    <div class="flex justify-center items-center text-lg flex-wrap">
+        <ul class="flex items-center justify-between h-36 w-4/5 bg-orange-100 pl-12 pr-12 rounded-2xl">
+            <li class="flex gap-6 items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-primary)] lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                <div>
+                    <p><strong>Entrega grátis</strong></p>
+                    <p>em pedidos acima de <strong>$50,00</strong></p>
+                </div>
+            </li>
+            <li class="flex gap-6 items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-primary)] lucide lucide-crown-icon lucide-crown"><path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5 21h14"/></svg>
+                <div>
+                    <p><strong>Melhor qualidade</strong></p>
+                    <p>no menor preço</p>
+                </div>
+            </li>
+            <li class="flex gap-6 items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-primary)] lucide lucide-shield-check-icon lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                <div>
+                    <p><strong>1 ano de garantia</strong></p>
+                    <p>garantia disponível</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </section>
