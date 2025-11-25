@@ -1,18 +1,38 @@
-<section class="flex mt-14">
-    <aside class="flex flex-col gap-6 items-center ml-4">
-        <h3 class="text-2xl text-[#003F62]">Categorias</h3>
-        
-        <ul class="flex flex-col gap-4 pl-4 mb-10">
-            <li class="text-lg text-[#222222] flex gap-2" *ngFor="let categoria of todasAsCategorias">
-                <input class="w-6" type="checkbox" [id]="categoria.nome" [value]="categoria.nome" (change)="selecionarProdutosCategoria($event)" [checked]="categoriasSelecionadas.includes(categoria.nome)">
-                <label [for]="categoria.nome" class="hover:cursor-pointer"> {{ categoria.nome }}</label>
-            </li>
-        </ul>
+<section class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+    <!-- Sidebar / Filters -->
+    <aside class="w-full lg:w-64 flex-shrink-0">
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 sticky top-24">
+            <h3 class="text-xl font-bold text-[var(--color-text-main)] mb-6 border-b border-gray-100 pb-4">Categorias
+            </h3>
+
+            <ul class="flex flex-col gap-3">
+                <li class="flex items-center gap-3 group" *ngFor="let categoria of todasAsCategorias">
+                    <div class="relative flex items-center">
+                        <input type="checkbox" [id]="categoria.nome" [value]="categoria.nome"
+                            (change)="selecionarProdutosCategoria($event)"
+                            [checked]="categoriasSelecionadas.includes(categoria.nome)"
+                            class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-300 transition-all checked:border-[var(--color-primary)] checked:bg-[var(--color-primary)] hover:border-[var(--color-primary)]">
+                        <svg class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-0 peer-checked:opacity-100 transition-opacity"
+                            xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                    </div>
+                    <label [for]="categoria.nome"
+                        class="text-gray-600 group-hover:text-[var(--color-primary)] transition-colors cursor-pointer select-none text-sm font-medium">
+                        {{ categoria.nome }}
+                    </label>
+                </li>
+            </ul>
+        </div>
     </aside>
 
-    <ul class="flex flex-wrap gap-4 justify-center p-4 mb-11 items-center w-full flex-2/5">
-        <li *ngFor="let produto of listaProdutos" class="flex justify-center items-center">
-            <produto-card [produto]="produto"></produto-card>
-        </li>
-    </ul>
+    <!-- Product Grid -->
+    <div class="flex-1">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <li *ngFor="let produto of listaProdutos" class="flex justify-center">
+                <produto-card [produto]="produto" class="w-full"></produto-card>
+            </li>
+        </ul>
+    </div>
 </section>
