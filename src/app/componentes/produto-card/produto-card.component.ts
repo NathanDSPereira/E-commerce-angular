@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Produto } from '../../interface/produto';
 import { Credenciais } from '../../interface/credenciais';
 import { AuthService } from '../../service/auth.service';
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'produto-card',
@@ -20,7 +21,9 @@ export class ProdutoIndividualComponent {
 
   produtoInserido?: boolean;
 
-  constructor(private authService: AuthService) {}
+  quantidadeProdutosUsuario?: number;
+
+  constructor(private authService: AuthService, private carrinhoService: CarrinhoService) {}
 
   comprar(): void {
     if(!this.authService.estaLogado()) {
@@ -57,7 +60,10 @@ export class ProdutoIndividualComponent {
   salvarProduto(produtoNovo: Produto): void {
     this.usuarioSessionObject?.produtos?.push(produtoNovo);
     this.authService.atualizarUsuarioSessionStorage(this.usuarioSessionObject)
+    
+    this.quantidadeProdutosUsuario = this.usuarioSessionObject?.produtos?.length;
+    this.carrinhoService.atualizarQuantidadeProdutos(this.quantidadeProdutosUsuario)
+
     alert("Produto adicionado ao carrinho!")
-    window.location.reload();
   }
 }

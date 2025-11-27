@@ -7,7 +7,7 @@
             </div>
             <div class="mt-5">
                 <ul class="flex flex-col gap-2 justify-center text-center">
-                    <li class="flex items-center h-14 hover:cursor-pointer hover:font-semibold hover:border-b-[#888888] hover:border-b-[1px]">
+                    <li class="flex items-center h-14 hover:translate-x-2 transition-all hover:cursor-pointer hover:border-b-[#888888] hover:text-[var(--color-primary)] hover:border-b-[1px]">
                         <a class="flex items-center justify-start gap-1 text-xl">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round">
                                 <circle cx="12" cy="8" r="5"/>
@@ -16,16 +16,16 @@
                             Perfil
                         </a>
                     </li>
-                    <li class="flex items-center h-14 hover:cursor-pointer hover:font-semibold hover:border-b-[#888888] hover:border-b-[1px]">
-                        <a class="flex items-center justify-start gap-1 text-lg">
+                    <li class="flex items-center h-14 hover:translate-x-2 transition-all hover:cursor-pointer hover:text-[var(--color-primary)] hover:border-b-[#888888] hover:border-b-[1px]">
+                        <a class="flex items-center justify-start gap-1 text-lg translate-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart">
                                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
                             </svg>
                             Favoritos
                         </a>
                     </li>
-                    <li class="flex items-center h-14 hover:cursor-pointer hover:font-semibold hover:border-b-[#888888] hover:border-b-[1px]">
-                        <a class="flex items-center justify-start gap-1 text-lg">
+                    <li class="flex items-center justify-between h-14 hover:translate-x-2 transition-all hover:cursor-pointer hover:text-[var(--color-primary)] hover:border-b-[#888888] hover:border-b-[1px]">
+                        <a class="flex items-center justify-between gap-1 text-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart">
                                 <circle cx="8" cy="21" r="1"/>
                                 <circle cx="19" cy="21" r="1"/>
@@ -33,6 +33,9 @@
                             </svg>
                             Carrinho
                         </a>
+                        <div class="flex items-center justify-center rounded-full bg-[var(--color-primary)] w-7 h-7">
+                            <p class="text-white font-bold">{{ quantidadeProdutosCarrinho}}</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -41,7 +44,7 @@
         <div class="flex flex-col flex-1/2 gap-6">
             <div class="flex justify-between items-center">
                 <h3 class="text-4xl font-semibold">Perfil</h3>
-                <button (click)="deslogar()" [routerLink]="['/home']" class="cursor-pointer bg-[#F4A261] hover:bg-[#ff9138] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-black font-semibold h-14">Sair</button>
+                <button (click)="deslogar()" [routerLink]="['/home']" class="cursor-pointer bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-dark)] px-6 py-3 rounded-xl text-slate-900 font-semibold h-14 shadow hover:shadow-2xl">Sair</button>
             </div>
 
             <div class="bg-[#ffffff] border-[1px] border-[#88888871] shadow rounded-2xl w-full p-6">

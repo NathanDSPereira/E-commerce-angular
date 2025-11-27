@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { Credenciais } from '../../interface/credenciais';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'app-perfil',
@@ -14,7 +16,9 @@ export class PerfilComponent implements OnInit{
   dadosUrl?: string | null
   dadosUsuarioArray?: Credenciais;
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, router: Router) {}
+  quantidadeProdutosCarrinho?: number
+
+  constructor(private authService: AuthService, private route: ActivatedRoute, private carrinhoService: CarrinhoService) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -22,13 +26,17 @@ export class PerfilComponent implements OnInit{
 
       if(this.dadosUrl) {
         this.dadosUsuarioArray = JSON.parse(this.dadosUrl)
+
+        this.carrinhoService.quantidadeCarrinho.subscribe((quantidade) => {
+          this.quantidadeProdutosCarrinho = quantidade;
+        })
       }
     })
   
     console.log(this.dadosUsuarioArray, typeof this.dadosUsuarioArray)
   }
 
-    deslogar(): void {
-      this.authService.deslogar();
-    }
+  deslogar(): void {
+    this.authService.deslogar();
+  }
 }

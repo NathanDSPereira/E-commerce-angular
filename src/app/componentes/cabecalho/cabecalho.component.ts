@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { Credenciais } from '../../interface/credenciais';
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'cabecalho-app',
@@ -17,8 +18,8 @@ export class CabecalhoComponent implements OnInit {
 
   dadosUsuarioLogado?: string | null;
   dadosUsuarioLogadoArray?: Credenciais;
-  produtosNoCarrinho!: number | undefined;
-  constructor(private navegar: Router, private authService: AuthService) { }
+  quantidadeProdutosNoCarrinho!: number | undefined;
+  constructor(private authService: AuthService, private carrinhoService: CarrinhoService) { }
 
   ngOnInit(): void {
     if (this.authService.estaLogado()) {
@@ -27,8 +28,9 @@ export class CabecalhoComponent implements OnInit {
         this.dadosUsuarioLogadoArray = JSON.parse(this.dadosUsuarioLogado);
       }
     }
-    this.produtosNoCarrinho = this.dadosUsuarioLogadoArray?.produtos?.length;
-    console.log(this.produtosNoCarrinho)
+    this.carrinhoService.quantidadeCarrinho.subscribe((quantidade) => {
+      this.quantidadeProdutosNoCarrinho = quantidade;
+    });
   }
 
   verificarSeEstaLogado(): boolean {
