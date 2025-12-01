@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { Credenciais } from '../../interface/credenciais';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 
 import { CarrinhoService } from '../../service/carrinho.service';
 
@@ -18,7 +18,7 @@ export class PerfilComponent implements OnInit{
 
   quantidadeProdutosCarrinho?: number
 
-  constructor(private authService: AuthService, private route: ActivatedRoute, private carrinhoService: CarrinhoService) {}
+  constructor(private authService: AuthService, private route: ActivatedRoute, private carrinhoService: CarrinhoService, private router: Router) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -38,5 +38,9 @@ export class PerfilComponent implements OnInit{
 
   deslogar(): void {
     this.authService.deslogar();
+  }
+
+  irParaCarrinho(): void {
+    this.router.navigate(['/carrinho'])
   }
 }

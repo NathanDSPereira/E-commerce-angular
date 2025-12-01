@@ -6,6 +6,7 @@ import { LayoutComponent } from './componentes/layout/layout.component';
 import { RegistrarComponent } from './paginas/registrar/registrar.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { authGuard } from './guard/auth.guard';
+import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -19,7 +20,8 @@ export const routes: Routes = [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
             {path: 'home', component: HomePageComponent},
             {path: 'produtos', component: ListaProdutosComponent},
-            {path: 'perfil', component: PerfilComponent, canActivate: [authGuard]}
+            {path: 'perfil', component: PerfilComponent, canActivate: [authGuard]},
+            {path: 'carrinho', component: CarrinhoComponent}
         ]
     }
 ]
