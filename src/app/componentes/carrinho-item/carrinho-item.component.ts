@@ -11,7 +11,4 @@ import { Produto } from '../../interface/produto';
 })
 export class CarrinhoItemComponent {
   @Input() carrinhoItem!: Produto;
-
-  
-
 }
