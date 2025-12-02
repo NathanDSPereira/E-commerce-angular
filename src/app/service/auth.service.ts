@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { delay, Observable, of, tap, windowCount } from 'rxjs';
 import { Usuario } from '../interface/usuario';
 import { Credenciais } from '../interface/credenciais';
+import { CarrinhoService } from './carrinho.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class AuthService {
 
   private tokenExemploValido?: string;
 
-  constructor() { 
+  constructor(private carrinhoService: CarrinhoService) { 
     window.addEventListener("beforeunload", () => {
       this.atualizarProdutosNoLocalStorage();
     })
@@ -49,6 +50,7 @@ export class AuthService {
         delay(800),
         tap((response) => {
           this.setSessionStorage(response)
+          this.carrinhoService.atualizarQuantidadeProdutos(response.produtos?.length ?? 0);
         })
       )
     } else {
@@ -56,7 +58,6 @@ export class AuthService {
         obs.error("Credenciais erradas ou usuario não encontrado!")
       })
     }
-
   }
 
   verificaRegistrar(usuario: Usuario): void {
@@ -109,7 +110,7 @@ export class AuthService {
   obterTodosOsUsuariosLocalStorage(): Usuario[] {
     this.dadosJSON = this.getLocalStorage();
 
-    if(this.dadosJSON == null) {
+    if(!this.dadosJSON) {
       return [];
     } else {
       return JSON.parse(this.dadosJSON) as Usuario[]

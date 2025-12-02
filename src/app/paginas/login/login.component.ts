@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'app-login',

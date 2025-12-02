@@ -1,8 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CabecalhoComponent } from '../../componentes/cabecalho/cabecalho.component';
 import { CommonModule } from '@angular/common';
-import { RodapeComponent } from '../../componentes/rodape/rodape.component';
 import { RouterOutlet } from '@angular/router';
 
 
@@ -14,5 +12,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home.component.css',
 })
 
-export class HomeComponent{
+export class HomeComponent {
 }
