@@ -1,10 +1,12 @@
-<div class="h-28 w-full flex items-center gap-3">
-    <div class="h-full object-contain">
-        <img class="h-full w-30 object-contain rounded-2xl" [src]="carrinhoItem.imagemUrl"  [alt]="carrinhoItem.titulo">
+<div class="h-28 w-full flex items-center justify-between">
+    <div class="h-full flex items-center gap-3">
+        <div class="h-full object-contain">
+            <img class="h-full w-30 object-contain rounded-2xl" [src]="carrinhoItem.imagemUrl"  [alt]="carrinhoItem.titulo">
+        </div>
+        <div class="flex flex-col gap-3">
+            <h4 class="text-lg text-slate-900">{{ carrinhoItem.titulo }}</h4>
+            <p>{{carrinhoItem.descricao}}</p>
+        </div>
     </div>
-    <div class="flex flex-col gap-3">
-        <h4 class="text-lg text-slate-900">{{ carrinhoItem.titulo }}</h4>
-        <p>{{carrinhoItem.descricao}}</p>
-    </div>
-    <p>{{carrinhoItem.preco}}</p>
+    <p class="text-lg text-slate-900">{{carrinhoItem.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
 </div>

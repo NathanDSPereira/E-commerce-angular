@@ -45,7 +45,7 @@ export class ProdutoIndividualComponent {
     this.usuarioSessionObject = this.authService.pegarDadosUsuarioSessionStorage();
       
     this.produtoInserido = this.usuarioSessionObject?.produtos?.some((produtoIncluso) => {
-      return Number(produtoIncluso.adicionadoNoCarrinho) === Number(produto.adicionadoNoCarrinho)
+      return Number(produtoIncluso.id) === Number(produto.id)
     })
 
     if(this.produtoInserido) {
