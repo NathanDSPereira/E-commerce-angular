@@ -20,6 +20,8 @@ export class CarrinhoComponent implements OnInit {
 
   totalAPagarProdutos:number = 0;
 
+  indice!: number;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
@@ -35,8 +37,26 @@ export class CarrinhoComponent implements OnInit {
 
   somaPrecosProdutos(): void {
     this.carrinhoLista?.forEach((itemLista) => {
-      // this.totalAPagarProdutos += itemLista.preco;
-      console.log(this.totalAPagarProdutos += itemLista.preco)
+      this.totalAPagarProdutos += itemLista.preco;
     })
+  }
+
+  excluirProdutoCarrinho(produtoId: number): void {
+    alert(`Produto removido do carrinho com sucesso!`);
+
+    const indice = this.carrinhoLista?.findIndex((item) => item.id === produtoId);
+
+    if (indice !== undefined && indice > -1 && this.carrinhoLista) {
+      this.carrinhoLista.splice(indice, 1);
+      if (this.usuarioLogado) { 
+        this.usuarioLogado.produtos = this.carrinhoLista;
+
+        this.authService.atualizarUsuarioSessionStorage(this.usuarioLogado);
+      }
+
+      this.totalAPagarProdutos = 0;
+      this.somaPrecosProdutos();
+    } 
+
   }
 }

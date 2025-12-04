@@ -7,7 +7,7 @@
             </div>
             <ul class="flex flex-col flex-wrap gap-5 mt-10">
                 <li *ngFor="let item of carrinhoLista" class="rounded-2xl hover: hover:bg-gradient-to-r from-slate-200 to-transparent hover:translate-x-2 transition-all hover:cursor-pointer border-b p-3 border-slate-400">
-                    <app-carrinho-item [carrinhoItem]="item"></app-carrinho-item>
+                    <app-carrinho-item [carrinhoItem]="item" (excluirProdutoCarrinho)="excluirProdutoCarrinho($event)"></app-carrinho-item>
                 </li>
             </ul>
         </div>
