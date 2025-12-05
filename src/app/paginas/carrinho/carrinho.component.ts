@@ -7,6 +7,7 @@ import { AuthService } from '../../service/auth.service';
 import { Credenciais } from '../../interface/credenciais';
 import { CarrinhoItemComponent } from "../../componentes/carrinho-item/carrinho-item.component";
 import { TotalCarrinhoCompraComponent } from "../../componentes/total-carrinho-compra/total-carrinho-compra.component";
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -22,7 +23,7 @@ export class CarrinhoComponent implements OnInit {
 
   indice!: number;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private carrinho: CarrinhoService) {}
 
   ngOnInit(): void {
     this.usuarioLogado = this.authService.pegarDadosUsuarioSessionStorage();
@@ -56,7 +57,9 @@ export class CarrinhoComponent implements OnInit {
 
       this.totalAPagarProdutos = 0;
       this.somaPrecosProdutos();
-    } 
+
+      this.carrinho.atualizarQuantidadeProdutos(this.carrinhoLista.length);
+    }
 
   }
 }
