@@ -13,6 +13,10 @@ export class ProdutoService {
 
 
     getProducts(): Observable<Produto[]> {
-       return this.http.get<Produto[]>('assets/data/produtos.json');
+        return this.http.get<Produto[]>('assets/data/produtos.json');
+    }
+
+    pegarProdutoPorId(id: number): Observable<Produto> {
+        return this.http.get<Produto>(`assets/data/produtos/${id}.json`);
     }
 }

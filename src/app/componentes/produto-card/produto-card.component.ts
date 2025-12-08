@@ -5,6 +5,7 @@ import { Produto } from '../../interface/produto';
 import { Credenciais } from '../../interface/credenciais';
 import { AuthService } from '../../service/auth.service';
 import { CarrinhoService } from '../../service/carrinho.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'produto-card',
@@ -23,7 +24,7 @@ export class ProdutoIndividualComponent {
 
   quantidadeProdutosUsuario?: number;
 
-  constructor(private authService: AuthService, private carrinhoService: CarrinhoService) {}
+  constructor(private authService: AuthService, private carrinhoService: CarrinhoService, private router: Router) {}
 
   comprar(): void {
     if(!this.authService.estaLogado()) {
@@ -65,5 +66,9 @@ export class ProdutoIndividualComponent {
     this.carrinhoService.atualizarQuantidadeProdutos(this.quantidadeProdutosUsuario)
 
     alert("Produto adicionado ao carrinho!")
+  }
+
+  navegarParaProdutoDetalhado(): void {
+    this.router.navigate([`/produto/${this.produto.id}`]);
   }
 }
