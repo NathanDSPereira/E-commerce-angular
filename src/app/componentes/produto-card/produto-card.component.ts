@@ -18,55 +18,7 @@ import { Router } from '@angular/router';
 export class ProdutoIndividualComponent {
   @Input() produto!: Produto;
 
-  usuarioSessionObject?: Credenciais;
-
-  produtoInserido?: boolean;
-
-  quantidadeProdutosUsuario?: number;
-
-  constructor(private authService: AuthService, private carrinhoService: CarrinhoService, private router: Router) {}
-
-  comprar(): void {
-    if(!this.authService.estaLogado()) {
-      alert("Por favor, esteja logado para comprar");
-      return
-    }
-
-    if(this.verificarProdutoIncluso(this.produto)) {
-      alert("Produto já incluso no carrinho!")
-      return;
-    }
-    
-    this.salvarProduto(this.produto);
-  }
-
-  verificarProdutoIncluso(produto: Produto): boolean {
-    if(!this.authService.pegarDadosUsuarioSessionStorage()) return false
-
-    this.usuarioSessionObject = this.authService.pegarDadosUsuarioSessionStorage();
-      
-    this.produtoInserido = this.usuarioSessionObject?.produtos?.some((produtoIncluso) => {
-      return Number(produtoIncluso.id) === Number(produto.id)
-    })
-
-    if(this.produtoInserido) {
-      console.log('produto já incluso no carrinho')
-      return true
-    }
-
-    this.produto.adicionadoNoCarrinho = true;
-    return false;
-  }
-
-  salvarProduto(produtoNovo: Produto): void {
-    this.usuarioSessionObject?.produtos?.push(produtoNovo);
-    this.authService.atualizarUsuarioSessionStorage(this.usuarioSessionObject)
-    
-    this.quantidadeProdutosUsuario = this.usuarioSessionObject?.produtos?.length;
-    this.carrinhoService.atualizarQuantidadeProdutos(this.quantidadeProdutosUsuario)
-
-    alert("Produto adicionado ao carrinho!")
-  }
+  constructor(private router: Router) {}
 
   navegarParaProdutoDetalhado(): void {
     this.router.navigate([`/produto/${this.produto.id}`]);

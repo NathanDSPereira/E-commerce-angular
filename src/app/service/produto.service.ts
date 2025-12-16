@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Produto } from "../interface/produto";
 
@@ -17,6 +17,8 @@ export class ProdutoService {
     }
 
     pegarProdutoPorId(id: number): Observable<Produto> {
-        return this.http.get<Produto>(`assets/data/produtos/${id}.json`);
+        return this.getProducts().pipe(
+            map((produtos: Produto[]) => produtos.find(produto => produto.id === id) as Produto)
+        ); 
     }
 }

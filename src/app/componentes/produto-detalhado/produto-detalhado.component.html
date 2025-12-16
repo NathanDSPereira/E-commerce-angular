@@ -1,17 +1,26 @@
-<section>
-    <div>
-        <div>
-            <img src="" alt="imagem do produto">
+<section class="bg-gray-100">
+    <div class="py-20 flex justify-center items-center">
+        <div class="flex justify-center items-center gap-12 bg-white p-10 rounded-3xl shadow-lg w-4xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-96 max-h-96 w-1/2 flex justify-center items-center">
+                <img [src]="this.produto.imagemUrl" class="h-8/12 object-contain" alt="imagem do produto">
+            </div>
+            <div class="flex flex-col justify-between pt-5 pb-5 h-96 max-h-96 text-start w-1/2">
+                <div>
+                    <h2 class="text-3xl font-bold text-slate-800 mb-2">{{this.produto.titulo}}</h2>
+                    <p class="text-lg text-slate-700">{{this.produto.descricao}}</p>
+                    <p class="text-2xl font-bold text-[var(--color-primary)] mt-6">R$ {{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+                </div>
+    
+                <button (click)="comprar()" class="transition-opacity duration-300 h-16 p-4 text-lg text-center bg-[#F4A261] hover:cursor-pointer hover:bg-[#ff9138] rounded-lg flex gap-3 justify-center items-center font-semibold self-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>   
+                    Adicionar ao carrinho
+                </button> 
+            </div>
         </div>
-        <div>
-            <h2>Título do Produto</h2>
-            <p>Descrição detalhada do produto.</p>
-            <p>R$ 0,00</p>
-
-            <button class="transition-opacity duration-300 h-11 w-48 bg-[#F4A261] hover:cursor-pointer hover:bg-[#ff9138] rounded-md flex gap-3 justify-center items-center font-semibold self-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>   
-                Comprar
-            </button> 
-        </div>
+    </div>
+    
+    <div class="px-7 pb-20">
+        <h3 class="text-2xl font-bold text-slate-700 mb-10">Outros produtos</h3>
+        <lista-produtos-app></lista-produtos-app>
     </div>
 </section>
