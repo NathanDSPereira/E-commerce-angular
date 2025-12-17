@@ -8,6 +8,7 @@ import { AuthService } from '../../service/auth.service';
 import { CarrinhoService } from '../../service/carrinho.service';
 import { Credenciais } from '../../interface/credenciais';
 import { ProdutosComponent } from '../produtos/produtos.component';
+import { switchMap } from 'rxjs/internal/operators/switchMap';
 
 @Component({
   selector: 'app-produto-detalhado',
@@ -27,12 +28,22 @@ export class ProdutoDetalhadoComponent implements OnInit {
   produto!: Produto
 
   ngOnInit(): void {
-    const produtoId = this.route.snapshot.paramMap.get('id');
-    console.log('ID do produto detalhado:', produtoId);
-
-    this.produtoService.pegarProdutoPorId(Number(produtoId)).subscribe((produto) => {
-      this.produto = produto;
-      console.log('Produto detalhado carregado:', this.produto);
+    this.route.paramMap.pipe(
+      switchMap(params => {
+        const id = params.get('id');
+        return this.produtoService.pegarProdutoPorId(id ? Number(id) : 0)
+      })
+    ).subscribe({
+      next: (produto) => {
+        this.produto = produto;
+      
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 10);
+      },
+      error: (err) => {
+        console.error('Erro ao carregar o produto detalhado:', err);
+      }
     });
   }
 
