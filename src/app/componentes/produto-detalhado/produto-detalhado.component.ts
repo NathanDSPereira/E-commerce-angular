@@ -9,10 +9,11 @@ import { CarrinhoService } from '../../service/carrinho.service';
 import { Credenciais } from '../../interface/credenciais';
 import { ProdutosComponent } from '../produtos/produtos.component';
 import { switchMap } from 'rxjs/internal/operators/switchMap';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-produto-detalhado',
-  imports: [CommonModule, FormsModule, ProdutosComponent],
+  imports: [CommonModule, FormsModule, ProdutosComponent, RouterModule],
   templateUrl: './produto-detalhado.component.html',
   styleUrl: './produto-detalhado.component.css'
 })
@@ -31,15 +32,12 @@ export class ProdutoDetalhadoComponent implements OnInit {
     this.route.paramMap.pipe(
       switchMap(params => {
         const id = params.get('id');
+
         return this.produtoService.pegarProdutoPorId(id ? Number(id) : 0)
       })
     ).subscribe({
       next: (produto) => {
         this.produto = produto;
-      
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }, 10);
       },
       error: (err) => {
         console.error('Erro ao carregar o produto detalhado:', err);
@@ -88,5 +86,9 @@ export class ProdutoDetalhadoComponent implements OnInit {
     this.carrinhoService.atualizarQuantidadeProdutos(this.quantidadeProdutosUsuario)
 
     alert("Produto adicionado ao carrinho!")
+  }
+
+  adicionarAosFavoritos(): void {
+    this.produto.favoritado = !this.produto.favoritado;
   }
 }

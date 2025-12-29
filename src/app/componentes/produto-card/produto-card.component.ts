@@ -2,9 +2,6 @@ import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Produto } from '../../interface/produto';
-import { Credenciais } from '../../interface/credenciais';
-import { AuthService } from '../../service/auth.service';
-import { CarrinhoService } from '../../service/carrinho.service';
 import { Router } from '@angular/router';
 
 @Component({
