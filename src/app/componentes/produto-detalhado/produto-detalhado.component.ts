@@ -21,12 +21,14 @@ export class ProdutoDetalhadoComponent implements OnInit {
   usuarioSessionObject?: Credenciais;
 
   produtoInserido?: boolean;
+  produtoFavorito?: boolean;
 
   quantidadeProdutosUsuario?: number;
+  quantidadeFavoritosUsuario?: number;
   
-  constructor(private route: ActivatedRoute, private produtoService: ProdutoService, private authService: AuthService, private carrinhoService: CarrinhoService) {}
-
   produto!: Produto
+
+  constructor(private route: ActivatedRoute, private produtoService: ProdutoService, private authService: AuthService, private carrinhoService: CarrinhoService) {}
 
   ngOnInit(): void {
     this.route.paramMap.pipe(

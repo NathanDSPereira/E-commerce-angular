@@ -5,5 +5,6 @@ export interface Credenciais {
     telefone: string,
     email: string,
     produtos?: Produto[],
+    favoritos?: Produto[],
     token: string
 }

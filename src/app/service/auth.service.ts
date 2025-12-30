@@ -44,6 +44,7 @@ export class AuthService {
         telefone: this.usuarioCadastradoNoLocalStorage.telefone, 
         email: this.usuarioCadastradoNoLocalStorage.email,
         produtos: this.usuarioCadastradoNoLocalStorage.produtos,
+        favoritos: this.usuarioCadastradoNoLocalStorage.favoritos,
         token: this.tokenExemploValido
       }
       return of (this.usuarioSessionStorage).pipe(
@@ -71,6 +72,7 @@ export class AuthService {
         return
       } else {
         usuario.produtos = [];
+        usuario.favoritos = [];
         this.salvarNovoUsuarioLocalStorage(usuario);
         alert("Usuário cadastrado com sucesso!");
         return
@@ -88,6 +90,7 @@ export class AuthService {
 
     if(this.usuarioEncontrado !== -1) {
       this.listaUsuariosArray[this.usuarioEncontrado].produtos = this.usuarioSessionStorage?.produtos ?? [];
+      this.listaUsuariosArray[this.usuarioEncontrado].favoritos = this.usuarioSessionStorage?.favoritos ?? [];
     }
 
     this.setLocalStorage(this.listaUsuariosArray)

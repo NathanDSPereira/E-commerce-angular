@@ -5,5 +5,6 @@ export interface Usuario {
     email: string,
     telefone: string,
     produtos?: Produto[],
+    favoritos?: Produto[],
     senha: string
 }

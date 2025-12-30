@@ -1,13 +1,14 @@
 <div (click)="navegarParaProdutoDetalhado()" class="relative flex flex-col items-center justify-center max-w-2xs w-72 h-96 max-h-96 bg-white border border-gray-500 rounded-2xl shadow-gray-300 shadow-sm overflow-ellipsis hover:cursor-pointer transition-all duration-300 hover:scale-105">
-    <div class="h-4/12 p-1">
+    <div class="h-36 p-1">
         <img [src]="produto.imagemUrl" class="w-fit h-full" [alt]="produto.titulo">
     </div>
     
-    <div class="flex flex-col gap-4 p-5 text-center">
-        <h3 class="text-[#003F62] font-medium">{{produto.titulo}}</h3>
-        
-        <p class="text-[#4A4A4A] font-medium transition-opacity duration-300" [ngClass]="{ 'opacity-0': produto.hover, 'opacity-100': !produto.hover}">{{produto.descricao}}</p>
-        
-        <p class="text-[#000000] font-semibold">R$ {{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+    <div class="flex flex-col gap-3 p-5 text-start">
+        <div class="mt-2">
+            <h5 class="inline bg-gray-200 text-slate-600 font-medium">[ {{this.produto.categoria}} ]</h5>
+        </div>
+        <h3 class="text-[#003F62] font-bold mt-2">{{produto.titulo}}</h3>
+        <p class="text-slate-700">em até 10x <strong><i>sem juros</i></strong> de {{produto.preco/10 | currency:'BRL':'symbol':'1.2-2'}}</p>
+        <p class="text-gray-900 font-semibold self-center text-lg mt-3">R$ {{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
     </div>
 </div>
