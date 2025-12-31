@@ -1,0 +1,17 @@
+<section class="flex justify-center mt-20 mb-40 animate-fade-in-up">
+    <div class="w-4/5 flex justify-around">
+        <div class="w-3/5 max-w-3/5">
+            <div>
+                <h3 class="text-2xl text-slate-900 font-semibold">Carrinho</h3>
+                <p>todos os seus produtos</p>
+            </div>
+            <ul class="flex flex-col flex-wrap gap-5 mt-10">
+                <li *ngFor="let item of carrinhoLista" class="rounded-2xl hover: hover:bg-gradient-to-r from-slate-200 to-transparent hover:translate-x-2 transition-all hover:cursor-pointer border-b p-3 border-slate-400">
+                    <app-carrinho-item [carrinhoItem]="item" (excluirProdutoCarrinho)="excluirProdutoCarrinho($event)"></app-carrinho-item>
+                </li>
+            </ul>
+        </div>
+        <app-total-carrinho-compra [totalAPagar]="totalAPagarProdutos"></app-total-carrinho-compra>
+    </div>
+
+</section>

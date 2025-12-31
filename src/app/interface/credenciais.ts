@@ -1,5 +1,10 @@
+import { Produto } from "./produto"
+
 export interface Credenciais {
-    usuario?: string    
-    email: string
-    senha: string
+    nome: string,
+    telefone: string,
+    email: string,
+    produtos?: Produto[],
+    favoritos?: Produto[],
+    token: string
 }

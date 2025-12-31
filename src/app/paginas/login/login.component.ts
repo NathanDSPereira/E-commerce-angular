@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink, Router} from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { CarrinhoService } from '../../service/carrinho.service';
 
 @Component({
   selector: 'app-login',
@@ -22,20 +23,19 @@ export class LoginComponent {
       senha: new FormControl('', [Validators.required, Validators.minLength(3)])
     })
   }
-
+  
   entrar(): void {
     if(this.contatoForm.valid) {
-      this.authService.logar(this.contatoForm.value).subscribe({
+      this.authService.verificaLogin(this.contatoForm.value).subscribe({
         next: (response) => {
-          console.log("Credenciais validas");
-          this.route.navigate(['/home']);
+          this.route.navigate(['/home'])
         },
         error: (response) => {
-          this.mensagemErro = response;
+          this.mensagemErro = response
         }
-      });
+      })
     } else {
-      this.mensagemErro = 'Por favor, preencha o login!'
+      this.mensagemErro = 'Por favor, preencha o campos!'
     }
   }
 }

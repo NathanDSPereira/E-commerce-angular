@@ -1,0 +1,17 @@
+<div class="relative h-28 w-full flex items-center justify-between" (click)="navegarParaProdutoDetalhado()">
+    <div class="h-full flex items-center gap-3">
+        <div class="h-full object-contain">
+            <img class="h-full w-30 object-contain rounded-2xl" [src]="carrinhoItem.imagemUrl"  [alt]="carrinhoItem.titulo">
+        </div>
+        <div class="flex flex-col gap-3">
+            <h4 class="text-lg text-slate-900">{{ carrinhoItem.titulo }}</h4>
+            <p>{{carrinhoItem.descricao}}</p>
+        </div>
+    </div>
+
+    <p class="text-lg text-slate-900">{{carrinhoItem.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+
+    <button (click)="excluirProduto()" class="absolute top-0 right-0 hover:cursor-pointer hover:text-red-600 transition-all duration-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+    </button>
+</div>

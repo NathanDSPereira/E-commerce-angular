@@ -1,0 +1,45 @@
+<section class="bg-gray-100 animate-fade-in-up">
+    <div class="py-20 flex justify-center items-center">
+        <div class="flex justify-center items-center gap-12 bg-white p-10 rounded-3xl shadow-lg w-4xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-96 max-h-96 w-1/2 flex justify-center items-center border-b border-t border-gray-400 rounded-2xl">
+                <img [src]="this.produto.imagemUrl" class="h-8/12 object-contain" alt="imagem do produto">
+            </div>
+            <div class="flex flex-col justify-between pt-5 pb-5 h-96 max-h-96 text-start w-1/2">
+                <div>
+                    <div class="mb-2">
+                        <h4 class="inline bg-gray-200 text-slate-600 font-bold text-lg">[ {{this.produto.categoria}} ]</h4>
+                    </div>
+                    <h2 class="text-3xl text-slate-800 mb-2">{{this.produto.titulo}}</h2>
+                    <p class="text-lg text-slate-700">{{this.produto.descricao}}</p>
+                    <p class="text-slate-700 mt-3">em até 10x <strong><i>sem juros</i></strong> de {{produto.preco/10 | currency:'BRL':'symbol':'1.2-2'}}</p>
+                    <p class="text-2xl font-bold mt-4">{{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+                </div>
+    
+                <div class="flex items-center justify-between">
+                    <button (click)="comprar()" class="transition-opacity duration-300 h-16 p-6 text-lg text-center bg-[#F4A261] hover:cursor-pointer hover:bg-[#ff9138] rounded-lg flex gap-3 justify-center items-center font-semibold self-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-cart-icon lucide-shopping-cart"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>   
+                        Adicionar ao carrinho
+                    </button>
+                    <button (click)="adicionarAosFavoritos()" class="h-16 w-16 flex justify-center items-center rounded-full bg-[var(--color-primary-dark)] hover:cursor-pointer transition-colors duration-300">
+                        @if (produtoFavoritado) {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke="orange" stroke-width="2" fill="orange" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                        } @else {
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                        }
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="px-7 pb-20">
+        <div class="flex justify-between items-center px-5 mb-10">
+            <h3 class="text-2xl font-bold text-slate-700">Outros produtos</h3>
+            <a [routerLink]="['/produtos']" class="text-gray-600 hover:text-[var(--color-primary)] font-medium hover:cursor-pointer flex items-center gap-1">
+                Ver todos
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+        <lista-produtos-app></lista-produtos-app>
+    </div>
+</section>

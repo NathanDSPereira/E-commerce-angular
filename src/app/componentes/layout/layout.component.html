@@ -1,7 +1,9 @@
-<main class="bg-[#f4f4f4b0]">
-    <cabecalho-app></cabecalho-app>
+<main class="min-h-screen flex flex-col bg-[var(--color-background)]">
+    <cabecalho-app class="sticky top-0 z-50"></cabecalho-app>
 
-    <router-outlet></router-outlet>
-        
+    <div class="flex-grow">
+        <router-outlet></router-outlet>
+    </div>
+
     <app-rodape (scrollar)="escrollarParaTopo()"></app-rodape>
 </main>

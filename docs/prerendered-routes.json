@@ -1,6 +1,7 @@
 {
   "routes": {
     "/E-commerce-angular": {},
+    "/E-commerce-angular/carrinho": {},
     "/E-commerce-angular/home": {},
     "/E-commerce-angular/login": {},
     "/E-commerce-angular/perfil": {},

@@ -1,0 +1,15 @@
+<aside class="flex flex-col gap-3 rounded-sm w-80 h-64 bg-white p-5 shadow-lg">
+    <div class="border-b border-b-gray-400 pb-3 mb-3">
+        <h4 class="text-lg text-slate-900">Total da compra</h4>
+    </div>
+    <div class="flex justify-between flex-col gap-5 h-full">
+        <div>
+            <p class="text-slate-700">produtos ({{quantidadeProdutos}})</p>
+        </div>
+        <div class="flex justify-between font-bold">
+            <p class="">Total</p>
+            <p>{{totalAPagar | currency:'BRL':'symbol':'1.2-2'}}</p>
+        </div>
+        <button class="px-6 py-4 bg-[var(--color-secondary)] hover:bg-[var(--color-secondary-dark)] hover:cursor-pointer text-white font-bold rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/30">Comprar</button>
+    </div>
+</aside>
