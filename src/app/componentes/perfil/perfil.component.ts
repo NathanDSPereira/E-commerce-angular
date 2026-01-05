@@ -16,7 +16,8 @@ export class PerfilComponent implements OnInit{
   dadosUrl?: string | null
   dadosUsuarioArray?: Credenciais;
 
-  quantidadeProdutosCarrinho?: number
+  quantidadeProdutosCarrinho?: number;
+  quantidadeProdutosFavoritos?: number;
 
   constructor(private authService: AuthService, private route: ActivatedRoute, private carrinhoService: CarrinhoService, private router: Router) {}
 
@@ -30,6 +31,10 @@ export class PerfilComponent implements OnInit{
         this.carrinhoService.quantidadeCarrinho.subscribe((quantidade) => {
           this.quantidadeProdutosCarrinho = quantidade;
         })
+
+        this.carrinhoService.quantidadeFavoritos.subscribe((quantidade) => {
+          this.quantidadeProdutosFavoritos = quantidade;
+        })
       }
     })
   
@@ -42,5 +47,9 @@ export class PerfilComponent implements OnInit{
 
   irParaCarrinho(): void {
     this.router.navigate(['/carrinho'])
+  }
+
+  irParaFavoritos(): void {
+    this.router.navigate(['/favoritos'])
   }
 }

@@ -8,6 +8,7 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { authGuard } from './guard/auth.guard';
 import { CarrinhoComponent } from './paginas/carrinho/carrinho.component';
 import { ProdutoDetalhadoComponent } from './componentes/produto-detalhado/produto-detalhado.component';
+import { FavoritosComponent } from './paginas/favoritos/favoritos.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -23,7 +24,8 @@ export const routes: Routes = [
             {path: 'produtos', component: ListaProdutosComponent},
             {path: 'perfil', component: PerfilComponent, canActivate: [authGuard]},
             {path: 'carrinho', component: CarrinhoComponent},
-            {path: 'produto/:id', component: ProdutoDetalhadoComponent}
+            {path: 'produto/:id', component: ProdutoDetalhadoComponent},
+            {path: 'favoritos', component: FavoritosComponent}
         ]
     }
 ]

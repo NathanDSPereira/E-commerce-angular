@@ -1,0 +1,15 @@
+<section class="flex justify-center mt-20 mb-40 animate-fade-in-up">
+    <div class="w-4/5 flex justify-around">
+        <div class="w-full max-w-full">
+            <div>
+                <h3 class="text-2xl text-slate-900 font-semibold">Favoritos</h3>
+                <p>todos os seus produtos favoritos</p>
+            </div>
+            <ul class="flex flex-wrap gap-5 mt-10">
+                <li *ngFor="let item of favoritosLista" class="rounded-2xl hover: hover:bg-gradient-to-r from-slate-200 to-transparent hover:translate-x-2 transition-all hover:cursor-pointer border-b p-1 border-slate-400">
+                    <app-favoritos-item [favoritosItem]="item" (excluirProdutoFavorito)="excluirProdutoFavorito($event)"></app-favoritos-item>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
