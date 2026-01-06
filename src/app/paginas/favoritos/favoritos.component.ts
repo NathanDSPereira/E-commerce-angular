@@ -6,10 +6,11 @@ import { Credenciais } from '../../interface/credenciais';
 import { AuthService } from '../../service/auth.service';
 import { FavoritosItemComponent } from "../../componentes/favoritos-item/favoritos-item.component";
 import { CarrinhoService } from '../../service/carrinho.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-favoritos',
-  imports: [CommonModule, FormsModule, FavoritosItemComponent],
+  imports: [CommonModule, FormsModule, FavoritosItemComponent, RouterModule],
   templateUrl: './favoritos.component.html',
   styleUrl: './favoritos.component.css'
 })

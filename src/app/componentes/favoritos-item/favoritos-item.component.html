@@ -1,9 +1,9 @@
-<div class="rounded-2xl p-1  bg-white relative flex-col h-96 max-h-96 w-60 flex items-center justify-between" (click)="navegarParaProdutoDetalhado()">
-    <div class="h-2/5 object-contain">
+<div class="rounded-2xl p-1 bg-white relative flex-col h-[600px] max-h-96 w-60 flex items-center justify-around">
+    <div class="h-2/6 object-contain m-2">
         <img class="h-full w-fit object-contain" [src]="favoritosItem.imagemUrl"  [alt]="favoritosItem.titulo">
     </div>
     
-    <div class="flex flex-col gap-3 pb-10">
+    <div class="flex flex-col gap-3 p-2">
         <h4 class="text-lg text-slate-800">{{ favoritosItem.titulo }}</h4>
         
         <p class="text-slate-700">em até 10x <strong><i>sem juros</i></strong> de {{favoritosItem.preco/10 | currency:'BRL':'symbol':'1.2-2'}}</p>
@@ -11,9 +11,13 @@
         <p class="text-lg text-slate-900 font-bold">{{favoritosItem.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
     </div>
 
-    
-<!-- 
-    <button (click)="excluirFavorito()" class="absolute top-0 right-0 hover:cursor-pointer hover:text-red-600 transition-all duration-200">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-    </button> -->
+    <div class="flex gap-2">
+        <button (click)="excluirFavorito()" class="flex gap-1 h-10 w-15 rounded-md text-slate-700 border shadow justify-center items-center hover:cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        </button>
+        <button (click)="navegarParaProdutoDetalhado()" class="flex gap-1 h-10 w-auto rounded-md bg-[var(--color-primary)] text-white p-2 border justify-center items-center hover:cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+            Ver produto
+        </button>    
+    </div>
 </div>

@@ -5,10 +5,10 @@
     
     <div class="flex flex-col gap-3 p-5 text-start">
         <div class="mt-2">
-            <h5 class="inline bg-gray-200 text-slate-600 font-medium">[ {{this.produto.categoria}} ]</h5>
+            <h5 class="bg-purple-100 text-purple-700 text-xs font-medium px-2.5 py-0.5 rounded-full inline">[ {{this.produto.categoria}} ]</h5>
         </div>
         <h3 class="text-[#003F62] font-bold mt-2">{{produto.titulo}}</h3>
         <p class="text-slate-700">em até 10x <strong><i>sem juros</i></strong> de {{produto.preco/10 | currency:'BRL':'symbol':'1.2-2'}}</p>
-        <p class="text-gray-900 font-semibold self-center text-lg mt-3">R$ {{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
+        <p class="text-gray-900 font-semibold text-lg mt-3">R$ {{produto.preco | currency:'BRL':'symbol':'1.2-2'}}</p>
     </div>
 </div>

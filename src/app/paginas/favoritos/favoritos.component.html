@@ -1,12 +1,21 @@
-<section class="flex justify-center mt-20 mb-40 animate-fade-in-up">
-    <div class="w-4/5 flex justify-around">
-        <div class="w-full max-w-full">
+<section class="flex mt-20 mb-40 pr-20 pl-20 animate-fade-in-up">
+    <div class="w-full">
+        <div class="flex justify-between items-center">
             <div>
                 <h3 class="text-2xl text-slate-900 font-semibold">Favoritos</h3>
                 <p>todos os seus produtos favoritos</p>
             </div>
-            <ul class="flex flex-wrap gap-5 mt-10">
-                <li *ngFor="let item of favoritosLista" class="rounded-2xl hover: hover:bg-gradient-to-r from-slate-200 to-transparent hover:translate-x-2 transition-all hover:cursor-pointer border-b p-1 border-slate-400">
+
+            <div>
+                <a [routerLink]="['/produtos']" class="text-gray-600 hover:text-[var(--color-primary)] font-medium hover:cursor-pointer flex items-center gap-1">
+                    todos os produtos
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="w-full max-w-full flex justify-center">
+            <ul class="flex flex-wrap justify-center gap-6 mt-10">
+                <li *ngFor="let item of favoritosLista" class="rounded-2xl shadow-gray-300 shadow-sm overflow-ellipsis hover:cursor-pointer transition-all duration-300 border border-transparent hover:border-[var(--color-primary)] hover:shadow-lg hover:translate-y-2">
                     <app-favoritos-item [favoritosItem]="item" (excluirProdutoFavorito)="excluirProdutoFavorito($event)"></app-favoritos-item>
                 </li>
             </ul>
