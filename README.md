@@ -1,59 +1,39 @@
-# LojaAngular
+🛒 E-commerce Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
+Este repositório contém uma aplicação de E-commerce desenvolvida em Angular com o objetivo de aprimorar conhecimentos técnicos na stack utilizada profissionalmente. O projeto simula uma plataforma de vendas online, focando em arquitetura escalável e componentização.
 
-## Development server
+⚠️ Status do Projeto: Em desenvolvimento 🛠️
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+🎯 Objetivos do Projeto
+Aplicar conceitos avançados de Angular (Services, Dependency Injection, RxJS).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Praticar a tipagem rigorosa com TypeScript.
 
-## Code scaffolding
+Simular fluxos reais de um e-commerce (listagem, carrinho e checkout).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Estar alinhado com as tecnologias e padrões de desenvolvimento da empresa atual.
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+🚀 Tecnologias e Ferramentas
+Framework: Angular (v15+)
 
-```bash
-ng generate --help
-```
+Linguagem: TypeScript
 
-## Building
+Estilização: Tailwind Css / HTML5
 
-To build the project run:
+Gerenciamento de Estado: RxJS (Observables)
 
-```bash
-ng build
-```
+Consumo de API: HttpClient
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running unit tests
+🛠️ Funcionalidades Planejadas / Em Implementação
+Catálogo de Produtos: Exibição dinâmica de itens vindos de um serviço/API.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Carrinho de Compras: Adição, remoção e cálculo total de itens (utilizando o poder do RxJS).
 
-```bash
-ng test
-```
+Autenticação: (Opcional/Futuro) Área do cliente e proteção de rotas (Guards).
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+🎓 Contexto Profissional
+Este projeto faz parte do meu plano de desenvolvimento contínuo na Unimed Uberaba, onde busco dominar as ferramentas utilizadas no dia a dia da equipe de tecnologia para entregar soluções cada vez mais eficientes e robustas.
